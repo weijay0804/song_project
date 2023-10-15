@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path
-from topic_app.views import sayhello,show,bye
+from topic_app.views import sayhello,show,bye,add_data
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -25,4 +25,8 @@ urlpatterns = [
     path("bye",bye), # 說拜拜
 
     re_path(r'^show/(\w+)/$', show ,name = "show"),
+
+    path('add_data', add_data, name='add_data'),
+
+
 ]

@@ -5,6 +5,9 @@
         <h1>{{showname}}您好，歡迎光臨!</h1>
         <h2>現在時間:{{now}}</h2>
         <img src="{% static 'images/LOGO.png' %}" alt = '中原資管LOGO' />
-
+        <form action="{% url 'add_data' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Add Data">
+        </form>
     </body>
 </html>
