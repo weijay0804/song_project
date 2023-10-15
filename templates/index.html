@@ -1,6 +1,10 @@
 <html>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel = "stylesheet" type="text/css" />
     <body>
         <h1>{{showname}}您好，歡迎光臨!</h1>
         <h2>現在時間:{{now}}</h2>
+        <img src="{% static 'images/LOGO.png' %}" alt = '中原資管LOGO' />
+
     </body>
 </html>
