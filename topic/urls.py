@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,re_path
-from topic_app.views import sayhello,bye, sayhello2,index
+from topic_app.views import sayhello,show,bye
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,8 +24,5 @@ urlpatterns = [
 
     path("bye",bye), # 說拜拜
 
-    re_path(r'^sayhello/(\w+)/$', sayhello2, name='sayhello2'),
-
-    re_path(r'^index/(\w+)/$', index, name='index'),
-
+    re_path(r'^show/(\w+)/$', show ,name = "show"),
 ]
