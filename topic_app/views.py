@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from datetime import datetime
-from django.db import connection
+from django.http import HttpResponse #顯示文字 =System.out.print....
+from datetime import datetime #現在時間
+from django.db import connection #連接資料庫
+from django.shortcuts import redirect #返回某個urls的函數
 
 #Hello django
 def sayhello(request):
@@ -21,4 +22,4 @@ def add_data(request):
     if request.method == 'POST':
         with connection.cursor() as cursor:
             cursor.execute("insert into topic.song(`name`,`singer`,`type`,`long`) values ('測試姥姥姥姥','謝婷之','1','250');")
-        return HttpResponse('Data added successfully')
+        return render(request, 'index.html') #執行結束後跳回index
