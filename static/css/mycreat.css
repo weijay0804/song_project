@@ -1,0 +1,58 @@
+.c7-all-play-button{
+    margin:30px 0 0 545px;
+    display: flex;
+}
+.c7-all-play-button>button{
+    /*去除button樣式*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-color: #181534;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 0 10px;
+
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    cursor: pointer;
+}
+
+.c7-all-play-button-icon>img{
+    width: 15px;
+    height: 15px;
+}
+
+.c7-all-play-button-txt>p{
+    color: white;
+}
+
+.addcreat-img{
+    margin: 5px 90px 0 0;
+    cursor: pointer;
+}
+
+.addcreat-img>img{
+    width: 25px;
+    height: 25px;
+}
+
+.delete-img{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.delete-img>img{
+    width: 13px;
+    height: 13px;
+}
+
+.newContent-buttom ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

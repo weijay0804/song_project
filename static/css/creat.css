@@ -1,0 +1,204 @@
+.content4-creat{
+    display: flex;
+}
+
+.content4-creat-left{
+    padding: 10px 50px;
+    flex:1.5; 
+}
+
+.c4-left-top{
+    display: flex;
+}
+
+.c4-left-top-img{
+    margin: 20px 10px 0px 0;
+}
+
+.c4-left-top-img>img{
+    width: 30px;
+    height: 30px;
+}
+
+.c4-creat-title>h2{
+    color: #181436;
+}
+
+.choose-songlist{
+    color: #181436;
+    font-weight: bold;
+}
+
+.songlist-option>select{
+    width: 570px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid #181436;
+}
+
+.adjustment1>label{
+    margin: 0 10px 0 0;
+}
+
+fieldset{
+    border: 2px solid #181436;
+    border-radius: 5px;
+    width: 550px;
+    margin:0 0 10px 0; 
+    padding: 15px 0 15px 20px;
+}
+
+.adjustment2>input{
+    width: 250px;
+    height: 20px;
+}
+
+.memo>p{
+    font-size: 12px;
+    color: #444;
+}
+
+.memo ul>li{
+    font-size: 12px;
+    color: #444;
+    margin: 0 0 12px 0;
+}
+
+.generate-btn{
+    margin: 30px 0 0 0;
+}
+
+.generate-btn>button,.finish-btn>button{
+    /*去除button樣式*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    background-color: #181534;
+    width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 0 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor:pointer ;
+}
+
+.generate-btn button>p,.finish-btn button>p{
+    color: white;
+}
+
+.content4-creat-right{
+    flex:1;
+}
+
+.c4-r-choose-songlist{
+    margin: 95px 0 0 0;   
+}
+
+.c4-r-choose-songlist>p{
+    color: #181436;
+    font-weight: bold;
+}
+
+.c4-r-play{
+    width: 350px;
+    height: 100px;
+    background-color: #181436;
+    border-radius: 15px;
+    padding:0 0 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+.c4-r-lyrics{
+    width: 330px;
+    height: 195px;
+    background-color: #181436;
+    border-radius: 15px;
+    padding:20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c4-r-lyrics>textarea{
+    border:none;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.c4-r-choose-voice>select{
+    width: 370px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid #181436;
+}
+
+.c4-r-add-songname>input{
+    width: 370px;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px solid #181436;
+}
+
+/* 弹跳窗口样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #000;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.finish-img,.finish-txt,.finish-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.finish-img{
+    margin:20px 0 0 0;
+}
+
+.finish-img>img{
+    width: 50px;
+    height: 50px;
+}
+.finish-txt{
+    margin:0 0 20px 0;
+}
+.finish-txt>p{
+    color: #181436;
+    font-weight: bold;
+
+}
+
+
+
+
+
