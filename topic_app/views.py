@@ -23,3 +23,10 @@ def add_data(request):
         with connection.cursor() as cursor:
             cursor.execute("insert into topic.song(`name`,`singer`,`type`,`long`) values ('測試姥姥姥姥','謝婷之','1','250');")
         return render(request, 'index.html') #執行結束後跳回index
+    
+
+#正式程式 fight go go
+
+#首頁
+def index_start(request):
+    return render(request, 'index.html') #執行結束後跳回index
