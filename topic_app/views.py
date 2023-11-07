@@ -3,6 +3,7 @@ from django.http import HttpResponse #顯示文字 =System.out.print....
 from datetime import datetime #現在時間
 from django.db import connection #連接資料庫
 from django.shortcuts import redirect #返回某個urls的函數
+from .models import User
 
 #Hello django
 def sayhello(request):
@@ -30,3 +31,28 @@ def add_data(request):
 #首頁
 def index_start(request):
     return render(request, 'index.html') #執行結束後跳回index
+
+def validate_login(username, password):
+    # 在這裡實現登入驗證的邏輯
+    # 例如，你可以使用資料庫查詢來驗證使用者名稱和密碼
+
+    try:
+        user = User.objects.get(username=username, password=password)
+        return True
+    except User.DoesNotExist:
+        return False
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['uname']
+        password = request.POST['psw']
+        
+        # 下面是登入的邏輯
+        authentication_successful = validate_login(username, password)
+
+        if authentication_successful:
+            return render(request, 'index.html')
+        else:
+            return render(request, 'index.html')
+    return render(request, 'index.html')
