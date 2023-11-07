@@ -41,7 +41,8 @@
             <div class="logins" >
               <div id="id01" class="modallog">
                 <!--後端登入程式碼-->
-                <form class="modal-content animate" action="" method="post" >
+                <form class="modal-content animate" action="{% url 'login' %}" method="post" >
+                    {% csrf_token %}
                   <div class="imgcontainer">
                     <span onclick="document.getElementById('id01').style.display='none'" class="closelog" title="Close Modal">&times;</span>
                   </div>
