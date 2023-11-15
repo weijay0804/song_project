@@ -1,14 +1,15 @@
-.content6-setting{
+.content6-setting {
     padding: 20px 50px;
 }
 
-.setting-account-manage{
+.setting-account-manage {
     display: grid;
     grid-template-columns: auto auto auto auto;
     row-gap: 15px;
 
 }
-.manage-item{
+
+.manage-item {
     width: 240px;
     height: 100px;
     border-radius: 15px;
@@ -18,18 +19,20 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
-   
+
+
 }
-.manage-item-img{
-    margin:5px 20px 0 0;
+
+.manage-item-img {
+    margin: 5px 20px 0 0;
 }
-.manage-item-img>img{
+
+.manage-item-img>img {
     width: 25px;
     height: 25px;
 
 }
 
-.manage-item-txt>p{
+.manage-item-txt>p {
     color: #fff;
 }

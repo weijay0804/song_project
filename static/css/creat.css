@@ -1,74 +1,75 @@
-.content4-creat{
+.content4-creat {
     display: flex;
 }
 
-.content4-creat-left{
+.content4-creat-left {
     padding: 10px 50px;
-    flex:1.5; 
+    flex: 1.5;
 }
 
-.c4-left-top{
+.c4-left-top {
     display: flex;
 }
 
-.c4-left-top-img{
+.c4-left-top-img {
     margin: 20px 10px 0px 0;
 }
 
-.c4-left-top-img>img{
+.c4-left-top-img>img {
     width: 30px;
     height: 30px;
 }
 
-.c4-creat-title>h2{
+.c4-creat-title>h2 {
     color: #181436;
 }
 
-.choose-songlist{
+.choose-songlist {
     color: #181436;
     font-weight: bold;
 }
 
-.songlist-option>select{
+.songlist-option>select {
     width: 570px;
     height: 35px;
     border-radius: 5px;
     border: 2px solid #181436;
 }
 
-.adjustment1>label{
+.adjustment1>label {
     margin: 0 10px 0 0;
 }
 
-fieldset{
+fieldset {
     border: 2px solid #181436;
     border-radius: 5px;
     width: 550px;
-    margin:0 0 10px 0; 
+    margin: 0 0 10px 0;
     padding: 15px 0 15px 20px;
 }
 
-.adjustment2>input{
+.adjustment2>input {
     width: 250px;
     height: 20px;
 }
 
-.memo>p{
+.memo>p {
     font-size: 12px;
     color: #444;
 }
 
-.memo ul>li{
+.memo ul>li {
     font-size: 12px;
     color: #444;
     margin: 0 0 12px 0;
 }
 
-.generate-btn{
+.generate-btn {
     margin: 30px 0 0 0;
 }
 
-.generate-btn>button,.finish-btn>button{
+.generate-btn>button,
+.finish-btn>button {
     /*去除button樣式*/
     margin: 0;
     padding: 0;
@@ -85,63 +86,64 @@ fieldset{
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor:pointer ;
+    cursor: pointer;
 }
 
-.generate-btn button>p,.finish-btn button>p{
+.generate-btn button>p,
+.finish-btn button>p {
     color: white;
 }
 
-.content4-creat-right{
-    flex:1;
+.content4-creat-right {
+    flex: 1;
 }
 
-.c4-r-choose-songlist{
-    margin: 95px 0 0 0;   
+.c4-r-choose-songlist {
+    margin: 95px 0 0 0;
 }
 
-.c4-r-choose-songlist>p{
+.c4-r-choose-songlist>p {
     color: #181436;
     font-weight: bold;
 }
 
-.c4-r-play{
+.c4-r-play {
     width: 350px;
     height: 100px;
     background-color: #181436;
     border-radius: 15px;
-    padding:0 0 0 20px;
+    padding: 0 0 0 20px;
     display: flex;
     align-items: center;
 }
 
-.c4-r-lyrics{
+.c4-r-lyrics {
     width: 330px;
     height: 195px;
     background-color: #181436;
     border-radius: 15px;
-    padding:20px;
+    padding: 20px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.c4-r-lyrics>textarea{
-    border:none;
+.c4-r-lyrics>textarea {
+    border: none;
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
 
-.c4-r-choose-voice>select{
+.c4-r-choose-voice>select {
     width: 370px;
     height: 35px;
     border-radius: 5px;
     border: 2px solid #181436;
 }
 
-.c4-r-add-songname>input{
+.c4-r-add-songname>input {
     width: 370px;
     height: 35px;
     border-radius: 5px;
@@ -176,29 +178,30 @@ fieldset{
     font-size: 20px;
     cursor: pointer;
 }
-.finish-img,.finish-txt,.finish-btn{
+
+.finish-img,
+.finish-txt,
+.finish-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.finish-img{
-    margin:20px 0 0 0;
+
+.finish-img {
+    margin: 20px 0 0 0;
 }
 
-.finish-img>img{
+.finish-img>img {
     width: 50px;
     height: 50px;
 }
-.finish-txt{
-    margin:0 0 20px 0;
+
+.finish-txt {
+    margin: 0 0 20px 0;
 }
-.finish-txt>p{
+
+.finish-txt>p {
     color: #181436;
     font-weight: bold;
 
 }
-
-
-
-
-

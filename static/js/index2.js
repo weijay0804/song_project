@@ -9,7 +9,7 @@ window.onload = function () {
 function showTab(tabNumber) {
     // 隐藏所有選項卡内容
     var tabContents = document.querySelectorAll('.tab-content');
-    tabContents.forEach(function(content) {
+    tabContents.forEach(function (content) {
         content.style.display = 'none';
     });
 

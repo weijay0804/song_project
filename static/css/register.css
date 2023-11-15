@@ -2,28 +2,30 @@
     background-color: black;
     color: aliceblue;
   }*/
-  header{
-    position: relative;
-    top: 3%;
-    text-align: center;
-    margin-top: 10%;
-    margin-bottom: 3%;
+header {
+  position: relative;
+  top: 3%;
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 3%;
 
 }
 
-.box{
-  margin:  auto;
+.box {
+  margin: auto;
   width: 300px;
   height: 50px;
   margin-bottom: 5%;
 }
-.container-1{
+
+.container-1 {
   width: 300px;
   vertical-align: middle;
   white-space: nowrap;
   position: relative;
 }
-.container-1 input#search{
+
+.container-1 input#search {
   width: 300px;
   height: 50px;
   background: #2b303b;
@@ -36,19 +38,26 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+
 .container-1 input#search::-webkit-input-placeholder {
   color: #65737e;
 }
-.container-1 input#search:-moz-placeholder { /* Firefox 18- */
-  color: #65737e;  
+
+.container-1 input#search:-moz-placeholder {
+  /* Firefox 18- */
+  color: #65737e;
 }
-.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
-  color: #65737e;  
+
+.container-1 input#search::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #65737e;
 }
-.container-1 input#search:-ms-input-placeholder {  
-  color: #65737e;  
+
+.container-1 input#search:-ms-input-placeholder {
+  color: #65737e;
 }
-.container-1 .icon{
+
+.container-1 .icon {
   position: absolute;
   top: 50%;
   margin-left: 17px;
@@ -57,43 +66,53 @@
   color: #4f5b66;
   background-color: #2b303b;
 }
-.fa{
+
+.fa {
   background-color: #2b303b;
 }
-.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
-  outline:none;
+
+.container-1 input#search:hover,
+.container-1 input#search:focus,
+.container-1 input#search:active {
+  outline: none;
   background: #2b303b;
   color: aliceblue;
 }
-.idol-member{
+
+.idol-member {
   position: relative;
   margin: 10px;
   text-align: center;
   align-items: center;
   height: auto;
 }
-.item-group{
+
+.item-group {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 1px;
-  row-gap: 5px ;
+  row-gap: 5px;
   flex-wrap: wrap;
 
 }
-main{
+
+main {
   margin: 10PX;
 }
-.one-group{
-padding: 3%;
-margin-bottom: 5%;
+
+.one-group {
+  padding: 3%;
+  margin-bottom: 5%;
 }
-.singimg2{
+
+.singimg2 {
   height: 70px;
   border-radius: 50%;
   width: 70px;
 }
-.check{
-  position:absolute;
+
+.check {
+  position: absolute;
   width: 30px;
   height: 30px;
   background-color: aliceblue;
@@ -102,17 +121,19 @@ margin-bottom: 5%;
 }
 
 
-.onr-group>h4{
+.onr-group>h4 {
   margin-top: 1%;
   text-align: center;
   ;
 
 }
-.fa:after{
+
+.fa:after {
   color: #2b303b;
   background-color: white
 }
-footer{
+
+footer {
   position: fixed;
   right: 39%;
   bottom: 5%;
@@ -120,7 +141,8 @@ footer{
   background-color: aliceblue;
   color: black;
 }
-.btn03{
+
+.btn03 {
   width: 100px;
   height: 35px;
   border-radius: 10px;
@@ -129,12 +151,13 @@ footer{
   color: black;
   text-align: center;
 }
-.fa-glass::after{
-   content:"\f000";
+
+.fa-glass::after {
+  content: "\f000";
   color: #2b303b;
 }
 
-.search{
+.search {
   box-sizing: border-box;
   padding: 10px 10px 0 0;
   display: flex;
@@ -143,54 +166,60 @@ footer{
   margin-left: 10px;
   position: relative;
 }
-.search>img{
+
+.search>img {
   display: flex;
   width: 20px;
   height: 20px;
-  z-index:2;
-  position:absolute;
+  z-index: 2;
+  position: absolute;
   top: 0px;
-  left:10%;
+  left: 10%;
   position: relative;
 }
-.search>input{
+
+.search>input {
   outline: none;
-  background:none;
+  background: none;
   border: none;
   padding-left: 50px;
   width: 100%;
   height: 46px;
   border-radius: 10px;
   z-index: 0;
-  background-color:aliceblue;
+  background-color: aliceblue;
   color: #353535;
 }
-.title{
-    display: flex;
-    position: relative;
 
-    
+.title {
+  display: flex;
+  position: relative;
+
+
 }
+
 /*login*/
-.logins{
+.logins {
   display: flex;
   padding-top: 10px;
   margin-left: -250px;
 }
+
 /* Full-width input fields */
-.container>input[type=text], .container>input[type=password] {
+.container>input[type=text],
+.container>input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
- 
+
 }
 
 /* Set a style for all buttons */
 .btn01 {
-  background-color:aliceblue;
+  background-color: aliceblue;
   color: rgb(0, 0, 0);
   padding: 10px 20px;
   margin: 10px 150px;
@@ -228,21 +257,29 @@ footer{
 span.psw {
   float: right;
   padding-top: 16px;
-  
+
 }
 
 /* The Modal (background) */
 .modallog {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
   padding-top: 60px;
 
 }
@@ -251,9 +288,10 @@ span.psw {
 .modal-content {
   color: azure;
   background-color: #6e66b8d8;
-  margin: 0% auto 15% auto; /* 0% from the top, 15% from the bottom and centered */
+  margin: 0% auto 15% auto;
+  /* 0% from the top, 15% from the bottom and centered */
   border: 1px solid #8a8888;
-  width:470px; 
+  width: 470px;
   height: 80%;
   border-radius: 15px;
 
@@ -284,51 +322,68 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
 }
-  
+
 @keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
+
   .cancelbtn {
-     width: 100%;
+    width: 100%;
   }
 }
+
 /*register*/
-.register{
+.register {
   display: block;
   padding-top: 10px;
   margin-left: -130px;
 }
-.car{
-  margin-left:-110px ;
+
+.car {
+  margin-left: -110px;
   margin-top: 16px;
 }
+
 .modal-content1 {
-    color: azure;
-    background-color: #6e66b8d8;
-  margin: 0% auto 15% auto; /* 0% from the top, 15% from the bottom and centered */
+  color: azure;
+  background-color: #6e66b8d8;
+  margin: 0% auto 15% auto;
+  /* 0% from the top, 15% from the bottom and centered */
   border: 1px solid #8a8888;
-  width:500px; 
+  width: 500px;
   height: 80%;
   border-radius: 15px;
 
   background-blend-mode: multiply;
 }
-.container>h1{
-    color: aliceblue;
+
+.container>h1 {
+  color: aliceblue;
 }
+
 .container>label>h5 {
-    margin: 0px;
-    text-align: right;
-    color:aliceblue;
+  margin: 0px;
+  text-align: right;
+  color: aliceblue;
 }

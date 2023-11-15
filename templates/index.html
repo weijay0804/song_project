@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,202 +14,217 @@
     <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <link rel="stylesheet" href="{% static 'css/voice.css' %}">
 
-    
+
 
     <!-- Fontawesome Link for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    
-    <script src="{% static 'js/recording.js' %}" defer></script>
-   
 
-    
-   
+    <script src="{% static 'js/recording.js' %}" defer></script>
+
+
+
+
 </head>
+
 <body>
- 
+
     <div class="tabs">
         <div class="member">
             <div class="member-img">
                 <img src="{% static 'images/memberimg.jpg' %}" alt="">
             </div>
 
-            <div class="member-name" style="display: flex;"> 
-                <button class="btn01" onclick="document.getElementById('id01').style.display='block'" style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">登入</button>
-                <button class="btn01" onclick="document.getElementById('id02').style.display='block'" style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">註冊</button>
-        </div>
-        <div class="title">
-            <!--登入-->
-            <div class="logins" >
-              <div id="id01" class="modallog">
-                <!--後端登入程式碼-->
-                <form class="modal-content animate" action="{% url 'login' %}" method="post" >
-                    {% csrf_token %}
-                  <div class="imgcontainer">
-                    <span onclick="document.getElementById('id01').style.display='none'" class="closelog" title="Close Modal">&times;</span>
-                  </div>
-              
-                  <div class="container"><br>
-                    <h1 style="text-align: center;color: aliceblue;">歡迎使用 音你而定</h1><br>
-                    <label for="uname" style="color: aliceblue;size: 10px;"><b><br>帳號：</b></label>
-                    <input type="text" placeholder="請輸您的帳號" name="uname" required style="border-radius: 10px;">
-                    <br>
-                    <label for="psw" style="color: aliceblue;size: 10px;"><b><br>密碼：</b>
-                    <h5>累積錯誤次數最多3次</h5>
-                    </label>
-                    <input type="password" placeholder="請輸入您的密碼" name="psw" required style="border-radius: 10px;"><br><br>  
-                    <button onclick="document.getElementById('id01').style.display='none'" class="btn01" type="submit" style="align-items: center;">確定</button><br>
-                  </div>
-                </form>
-              </div>
+            <div class="member-name" style="display: flex;">
+                <button class="btn01" onclick="document.getElementById('id01').style.display='block'"
+                    style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">登入</button>
+                <button class="btn01" onclick="document.getElementById('id02').style.display='block'"
+                    style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">註冊</button>
             </div>
-            <!--註冊-->
-            <div class="register">                    
-              <div id="id02" class="modallog">
-                <!--後端註冊系統-->
-                <form class="modal-content1 animate page-content" action="" method="post" id="page1" >
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id02').style.display='none'" class="closelog" title="Close Modal">&times;</span>
-                    </div>
-              
-                    <div class="container" id=""><br>
-                        <h1 style="text-align: center;color: aliceblue;">歡迎使用 音你而定</h1><br>
-                        <label for="uname" style="color: aliceblue;size: 10px;"><b><br>姓名：</b></label>
-                        <input type="text" placeholder="請輸入您的姓名" name="uname" required style="border-radius: 10px;">
-                        <br>
-                        <label for="psw" style="color: aliceblue;size: 10px;"><b><br>電子郵件：</b></label>
-                        <input type="password" placeholder="請輸入您的電子郵件" name="psw" required style="border-radius: 10px;">
-                        <br>
-                        <label for="psw" style="color: aliceblue;size: 10px;"><b><br>設定密碼：</b></label>
-                        <input type="password" placeholder="請設定您的密碼" name="psw" required style="border-radius: 10px;">
-                        <br><br>  
-                        
-                        <button class="btn01" type="submit" style="align-items: center;" onclick="showNextStep()">註冊</button><br>
-                    </div>
-                </form>
-
-                <!--選擇喜愛歌手-->
-                <!--後端選擇歌手程式碼-->
-                <form class="modal-content1 animate page-content" action="" method="post" id="page2" style=" overflow: auto;">
-                    <div class="imgcontainer">
-                        <span onclick="document.getElementById('id02').style.display='none'" class="closelog" title="Close Modal">&times;</span>
-                    </div>
-                    
-                    <div class="container" style="max-height: 80vh; "><br>
-                        <h1 style="text-align: center;margin: 0%;">選擇你喜歡的歌手</h1>
-                        <h5 style="text-align: center;margin: 0%;">至少三位</h5>
-                            <main>
-                            <!--搜尋bar-->
-                            <div class="search">
-                                <img src="{% static 'images/search4.png' %}" alt="">
-                                <input type="text" class="search-input" placeholder="搜尋">
+            <div class="title">
+                <!--登入-->
+                <div class="logins">
+                    <div id="id01" class="modallog">
+                        <!--後端登入程式碼-->
+                        <form class="modal-content animate" action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('id01').style.display='none'" class="closelog"
+                                    title="Close Modal">&times;</span>
                             </div>
-                            <!--人像和名字-->
-                            <div class="idol-member">
-                                <div class="item-group">
-                                    <div class="one-group">
-                                         <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/dan.jpg' %}">
-                                         <h4>鄧紫棋</h4>
-                    
-                                    </div>
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/chu.jpg' %}">
-                                        <h4>周杰倫</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/yan.jpg' %}">
-                                        <h4>楊丞琳</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/li.jpg' %}">
-                                        <h4>李榮浩</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/iu.jpg' %}">
-                                        <h4>IU</h4>                    
-                                    </div>
-                                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/blackpink.jpg' %}">
-                                        <h4>BlackPink</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
-                                        <h4>Le sserafim</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/kao.jpg' %}">
-                                        <h4>告五人</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/chushin.jpg' %}">
-                                        <h4>周興哲</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/chai.jpg' %}">
-                                        <h4>蔡依林</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                        <img class="check" src="{% static 'images/check.png' %}" >
-                                        <img class="singimg2" src="{% static 'images/Itzy.jpg' %}">
-                                        <h4>Itzy</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                          <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
-                                        <h4>林俊傑</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                          <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/Aespa.jpg' %}">
-                                        <h4>Aespa</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                          <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/(G) I-DLE.jpg' %}">
-                                        <h4>(G) I-DLE</h4>
-                                    </div>
-                    
-                                    <div class="one-group">
-                                          <img class="check" src="{% static 'images/check.png' %}" >
-                                         <img class="singimg2" src="{% static 'images/VIVIZ.jpg' %}">
-                                        <h4>VIVIZ</h4>
-                                    </div>
-                                </div>
-                            </div> 
-                            <button onclick="document.getElementById('id02').style.display='none'" class="btn01" type="button" style="align-items: center;">確定</button><br>
-      
-                      </main>
 
-                    </div> 
-                </form>
-              </div>
+                            <div class="container"><br>
+                                <h1 style="text-align: center;color: aliceblue;">歡迎使用 音你而定</h1><br>
+                                <label for="uname" style="color: aliceblue;size: 10px;"><b><br>帳號：</b></label>
+                                <input type="text" placeholder="請輸您的帳號" name="uname" required
+                                    style="border-radius: 10px;">
+                                <br>
+                                <label for="psw" style="color: aliceblue;size: 10px;"><b><br>密碼：</b>
+                                    <h5>累積錯誤次數最多3次</h5>
+                                </label>
+                                <input type="password" placeholder="請輸入您的密碼" name="psw" required
+                                    style="border-radius: 10px;"><br><br>
+                                <button onclick="document.getElementById('id01').style.display='none'" class="btn01"
+                                    type="submit" style="align-items: center;">確定</button><br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--註冊-->
+                <div class="register">
+                    <div id="id02" class="modallog">
+                        <!--後端註冊系統-->
+                        <form class="modal-content1 animate page-content" action="" method="post" id="page1">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('id02').style.display='none'" class="closelog"
+                                    title="Close Modal">&times;</span>
+                            </div>
+
+                            <div class="container" id=""><br>
+                                <h1 style="text-align: center;color: aliceblue;">歡迎使用 音你而定</h1><br>
+                                <label for="uname" style="color: aliceblue;size: 10px;"><b><br>姓名：</b></label>
+                                <input type="text" placeholder="請輸入您的姓名" name="uname" required
+                                    style="border-radius: 10px;">
+                                <br>
+                                <label for="psw" style="color: aliceblue;size: 10px;"><b><br>電子郵件：</b></label>
+                                <input type="password" placeholder="請輸入您的電子郵件" name="psw" required
+                                    style="border-radius: 10px;">
+                                <br>
+                                <label for="psw" style="color: aliceblue;size: 10px;"><b><br>設定密碼：</b></label>
+                                <input type="password" placeholder="請設定您的密碼" name="psw" required
+                                    style="border-radius: 10px;">
+                                <br><br>
+
+                                <button class="btn01" type="submit" style="align-items: center;"
+                                    onclick="showNextStep()">註冊</button><br>
+                            </div>
+                        </form>
+
+                        <!--選擇喜愛歌手-->
+                        <!--後端選擇歌手程式碼-->
+                        <form class="modal-content1 animate page-content" action="" method="post" id="page2"
+                            style=" overflow: auto;">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('id02').style.display='none'" class="closelog"
+                                    title="Close Modal">&times;</span>
+                            </div>
+
+                            <div class="container" style="max-height: 80vh; "><br>
+                                <h1 style="text-align: center;margin: 0%;">選擇你喜歡的歌手</h1>
+                                <h5 style="text-align: center;margin: 0%;">至少三位</h5>
+                                <main>
+                                    <!--搜尋bar-->
+                                    <div class="search">
+                                        <img src="{% static 'images/search4.png' %}" alt="">
+                                        <input type="text" class="search-input" placeholder="搜尋">
+                                    </div>
+                                    <!--人像和名字-->
+                                    <div class="idol-member">
+                                        <div class="item-group">
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/dan.jpg' %}">
+                                                <h4>鄧紫棋</h4>
+
+                                            </div>
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/chu.jpg' %}">
+                                                <h4>周杰倫</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/yan.jpg' %}">
+                                                <h4>楊丞琳</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/li.jpg' %}">
+                                                <h4>李榮浩</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/iu.jpg' %}">
+                                                <h4>IU</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/blackpink.jpg' %}">
+                                                <h4>BlackPink</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
+                                                <h4>Le sserafim</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/kao.jpg' %}">
+                                                <h4>告五人</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/chushin.jpg' %}">
+                                                <h4>周興哲</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/chai.jpg' %}">
+                                                <h4>蔡依林</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/Itzy.jpg' %}">
+                                                <h4>Itzy</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
+                                                <h4>林俊傑</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/Aespa.jpg' %}">
+                                                <h4>Aespa</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/(G) I-DLE.jpg' %}">
+                                                <h4>(G) I-DLE</h4>
+                                            </div>
+
+                                            <div class="one-group">
+                                                <img class="check" src="{% static 'images/check.png' %}">
+                                                <img class="singimg2" src="{% static 'images/VIVIZ.jpg' %}">
+                                                <h4>VIVIZ</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button onclick="document.getElementById('id02').style.display='none'" class="btn01"
+                                        type="button" style="align-items: center;">確定</button><br>
+
+                                </main>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
 
-            
 
-            
+
+
         </div>
 
         <div class="menu">
@@ -281,10 +297,10 @@
                 </div>
                 <div class="logout-txt">
                     <p>登出</p>
-                </div> 
+                </div>
             </div>
         </form>
-       
+
 
     </div>
 
@@ -300,48 +316,48 @@
                         <input type="radio" id="control-1" name="control" checked>
                         <input type="radio" id="control-2" name="control">
                         <input type="radio" id="control-3" name="control">
-                        
+
                         <!--  Left/Right Button  -->
                         <div class="navigator slide-1">
-                          <label for="control-3">
-                            <i class="fas fa-chevron-left"></i>
-                          </label>
-                          <label for="control-2">
-                            <i class="fas fa-chevron-right"></i>
-                          </label>
+                            <label for="control-3">
+                                <i class="fas fa-chevron-left"></i>
+                            </label>
+                            <label for="control-2">
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
                         </div>
-                        
+
                         <div class="navigator slide-2">
-                          <label for="control-1">
-                            <i class="fas fa-chevron-left"></i>
-                          </label>
-                          <label for="control-3">
-                            <i class="fas fa-chevron-right"></i>
-                          </label>
+                            <label for="control-1">
+                                <i class="fas fa-chevron-left"></i>
+                            </label>
+                            <label for="control-3">
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
                         </div>
-                        
+
                         <div class="navigator slide-3">
-                          <label for="control-2">
-                            <i class="fas fa-chevron-left"></i>
-                          </label>
-                          <label for="control-1">
-                            <i class="fas fa-chevron-right"></i>
-                          </label>
+                            <label for="control-2">
+                                <i class="fas fa-chevron-left"></i>
+                            </label>
+                            <label for="control-1">
+                                <i class="fas fa-chevron-right"></i>
+                            </label>
                         </div>
                         <!--  圖片區  -->
-                        
+
                         <li class="slide"></li>
                         <li class="slide"></li>
                         <li class="slide"></li>
-                        
+
                         <!--圓形按鈕-->
                         <div class="controls-visible">
-                          <label for="control-1"></label>
-                          <label for="control-2"></label>
-                          <label for="control-3"></label>
+                            <label for="control-1"></label>
+                            <label for="control-2"></label>
+                            <label for="control-3"></label>
                         </div>
-                      </ul>
-    
+                    </ul>
+
                 </div>
 
                 <div class="title">
@@ -415,7 +431,7 @@
                     </div>
 
                 </div>
-                
+
                 <!--我的歌單-->
                 <div class="title">
                     <div class="title-txt">
@@ -424,7 +440,7 @@
                     <div class="title-href">
                         <a href="#" onclick="showTab(2)">See More</a>
                     </div>
-                    
+
                 </div>
 
                 <div class="songlist">
@@ -442,14 +458,14 @@
                                     <div class="songlist-count">
                                         <p>15</p>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
 
                             <div class="play-button-img">
                                 <img src="{% static 'images/play.png' %}" alt="">
-                            </div>    
+                            </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="list-item">
@@ -465,12 +481,12 @@
                                     <div class="songlist-count">
                                         <p>15</p>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
-                            
+
                             <div class="play-button-img">
                                 <img src="{% static 'images/play.png' %}" alt="">
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
@@ -487,12 +503,12 @@
                                     <div class="songlist-count">
                                         <p>15</p>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
-                            
+
                             <div class="play-button-img">
                                 <img src="{% static 'images/play.png' %}" alt="">
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
@@ -509,24 +525,24 @@
                                     <div class="songlist-count">
                                         <p>15</p>
                                     </div>
-                                </div>   
+                                </div>
                             </div>
-                            
+
                             <div class="play-button-img">
                                 <img src="{% static 'images/play.png' %}" alt="">
-                            </div>    
+                            </div>
                         </div>
                     </div>
 
                 </div>
-    
+
             </div>
 
 
 
             <div class="home-right">
 
-                 <!--搜尋-->
+                <!--搜尋-->
                 <div class="hr-search">
                     <input type="text" class="search-input" placeholder="搜尋">
                     <img src="{% static 'images/search4.png' %}" alt="">
@@ -540,7 +556,7 @@
                     <div class="title-href">
                         <a href="#" onclick="showTab(7)">See More</a>
                     </div>
-                    
+
                 </div>
 
                 <div class="creatlist">
@@ -553,7 +569,7 @@
                                     </div>
                                     <div class="creatlist-img">
                                         <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                                       
+
                                     </div>
                                     <div class="creatlist-txt">
                                         <div class="txt-name">
@@ -564,7 +580,7 @@
                                         </div>
                                     </div>
                                 </div>
-            
+
                                 <div class="creatlist-right">
                                     <div class="creatlist-time">
                                         <p>1:00</p>
@@ -575,7 +591,7 @@
                                     <div class="creatlist-right-img-2">
                                         <img src="{% static 'images/more.png' %}" alt="">
                                     </div>
-                                </div>   
+                                </div>
                             </div>
 
                         </li>
@@ -589,7 +605,7 @@
                                     </div>
                                     <div class="creatlist-img">
                                         <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                                       
+
                                     </div>
                                     <div class="creatlist-txt">
                                         <div class="txt-name">
@@ -600,7 +616,7 @@
                                         </div>
                                     </div>
                                 </div>
-            
+
                                 <div class="creatlist-right">
                                     <div class="creatlist-time">
                                         <p>1:00</p>
@@ -611,7 +627,7 @@
                                     <div class="creatlist-right-img-2">
                                         <img src="{% static 'images/more.png' %}" alt="">
                                     </div>
-                                </div>   
+                                </div>
                             </div>
 
                         </li>
@@ -624,7 +640,7 @@
                                     </div>
                                     <div class="creatlist-img">
                                         <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                                       
+
                                     </div>
                                     <div class="creatlist-txt">
                                         <div class="txt-name">
@@ -635,7 +651,7 @@
                                         </div>
                                     </div>
                                 </div>
-            
+
                                 <div class="creatlist-right">
                                     <div class="creatlist-time">
                                         <p>0:58</p>
@@ -646,7 +662,7 @@
                                     <div class="creatlist-right-img-2">
                                         <img src="{% static 'images/more.png' %}" alt="">
                                     </div>
-                                </div>   
+                                </div>
                             </div>
 
                         </li>
@@ -655,7 +671,7 @@
 
 
                 </div>
-                
+
                 <!--播放器-->
                 <div class="play">
                     <div class="play-img">
@@ -672,22 +688,22 @@
                         <img src="{% static 'images/audio.png' %}" alt="">
                         <img src="{% static 'images/audio.png' %}" alt="">
                         <img src="{% static 'images/audio.png' %}" alt="">
-        
+
                         <img src="{% static 'images/audio-waves.png' %}" alt="">
                         <img src="{% static 'images/audio-waves.png' %}" alt="">
                         <img src="{% static 'images/audio-waves.png' %}" alt="">
-        
+
                     </div>
 
                     <div class="audio">
                         <audio id="audio-playerr" controls></audio>
                     </div>
-                    
+
                 </div>
             </div>
 
         </div>
-     
+
     </div>
 
 
@@ -708,45 +724,45 @@
             </div>
 
         </div>
-        
+
 
         <div class="c2-songlist">
-            <div class="c2-songlist-item"  onclick="showNewContent(1)">
+            <div class="c2-songlist-item" onclick="showNewContent(1)">
                 <div class="c2-songlist-img">
-                    <img src="{% static 'images/memberimg.jpg' %}" alt="" >
+                    <img src="{% static 'images/memberimg.jpg' %}" alt="">
                 </div>
                 <div class="c2-songlist-name">
                     <p>鄧紫棋合輯</p>
                 </div>
             </div>
 
-            <div class="c2-songlist-item"  onclick="showNewContent(2)">
+            <div class="c2-songlist-item" onclick="showNewContent(2)">
                 <div class="c2-songlist-img">
-                    <img src="{% static 'images/memberimg.jpg' %}" alt="" >
+                    <img src="{% static 'images/memberimg.jpg' %}" alt="">
                 </div>
                 <div class="c2-songlist-name">
                     <p>The Weekend</p>
                 </div>
             </div>
 
-            <div class="c2-songlist-item"  onclick="showNewContent(3)">
+            <div class="c2-songlist-item" onclick="showNewContent(3)">
                 <div class="c2-songlist-img">
-                    <img src="{% static 'images/memberimg.jpg' %}" alt="" >
+                    <img src="{% static 'images/memberimg.jpg' %}" alt="">
                 </div>
                 <div class="c2-songlist-name">
                     <p>周杰倫合輯</p>
                 </div>
             </div>
 
-            <div class="c2-songlist-item"  onclick="showNewContent(4)">
+            <div class="c2-songlist-item" onclick="showNewContent(4)">
                 <div class="c2-songlist-img">
-                    <img src="{% static 'images/memberimg.jpg' %}" alt="" >
+                    <img src="{% static 'images/memberimg.jpg' %}" alt="">
                 </div>
                 <div class="c2-songlist-name">
                     <p>1234567</p>
                 </div>
             </div>
-            
+
 
         </div>
 
@@ -755,7 +771,7 @@
 
     <!-- 新的内容区域，初始时被隐藏 -->
     <div class="tab-content" id="newContent1">
-        
+
         <div class="newcontent">
 
             <div class="newcontent-left">
@@ -768,9 +784,9 @@
                                 <img src="{% static 'images/left-arrow.png' %}" alt="">
                             </div>
                         </button>
-        
+
                     </div>
-        
+
                     <div class="top-title">
                         <h2>鄧紫棋合輯</h2>
                     </div>
@@ -784,437 +800,437 @@
                             </div>
                         </button>
                     </div>
-                    
+
                 </div>
 
-                
+
                 <div class="newContent-buttom">
                     <ul id="playlist1">
 
                         <section class="songlist-box">
 
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>01</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>光年之外</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>02</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>倒數</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>4:02</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>03</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>天空沒有極限</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>4:38</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>04</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>很久以後</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>4:47</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>05</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>再見</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:36</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>06</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>句號</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>4:06</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>07</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>透明</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:45</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                     </ul>
 
                 </div>
-                
+
             </div>
 
 
@@ -1226,11 +1242,11 @@
                             <p>速度 Tempo</p>
                         </div>
 
-                        
-                        <form action="" ><!--後端程式碼判斷選項目-->
+
+                        <form action=""><!--後端程式碼判斷選項目-->
                             <div class="nr-tempo-choose">
 
-                            
+
                                 <input type="radio" name="tempo" id="choose1">
                                 <label for="choose1">40bpm</label>
 
@@ -1257,7 +1273,7 @@
 
                                 <input type="radio" name="tempo" id="choose9">
                                 <label for="choose9">200-208bpm</label>
- 
+
                             </div>
 
                             <div class="tempo-btn">
@@ -1268,7 +1284,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
                     <!--播放器-->
                     <div class="play">
                         <div class="play-img">
@@ -1285,24 +1301,24 @@
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
-        
+
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
-        
-                        </div>  
+
+                        </div>
 
                         <div class="audio">
                             <audio id="audio-player1" controls></audio>
                         </div>
-                    
+
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div class="tab-content" id="newContent2">
 
         <div class="newcontent">
@@ -1317,9 +1333,9 @@
                                 <img src="{% static 'images/left-arrow.png' %}" alt="">
                             </div>
                         </button>
-        
+
                     </div>
-        
+
                     <div class="top-title">
                         <h2>The Weekend</h2>
                     </div>
@@ -1333,437 +1349,437 @@
                             </div>
                         </button>
                     </div>
-                    
+
                 </div>
 
-                
+
                 <div class="newContent-buttom">
                     <ul id="playlist1">
 
                         <section class="songlist-box">
 
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>01</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>Super</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>Seventeen</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:18</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>02</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>愛人錯過</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>告五人</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>5:17</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>03</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>煙火裡的塵埃</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>華晨宇</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>5:23</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>04</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>訣愛</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>詹雯婷</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:18</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>05</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>3D</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>Jungkook</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:50</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>06</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>聾</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>張碧晨</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:01</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-                            
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>07</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                            
-        
+
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
-    
+
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>I Love My Body</p>
                                         </div>
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>華莎-HWASA</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:45</p>
                                 </div>
-    
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
-    
+
                                 </li>
 
                                 <div class="more">
                                     <div class="heart"></div>
-        
+
                                 </div>
-        
+
                                 <div class="more">
                                     <img src="{% static 'images/plus.png' %}" alt="">
                                 </div>
-                                
-        
+
+
                                 <div class="more">
                                     <img src="{% static 'images/more.png' %}" alt="">
                                 </div>
                             </div>
-        
+
                         </section>
 
                     </ul>
 
                 </div>
-                
+
             </div>
 
 
@@ -1775,11 +1791,11 @@
                             <p>速度 Tempo</p>
                         </div>
 
-                        
-                        <form action="" ><!--後端程式碼判斷選項目-->
+
+                        <form action=""><!--後端程式碼判斷選項目-->
                             <div class="nr-tempo-choose">
 
-                            
+
                                 <input type="radio" name="tempo" id="choose1">
                                 <label for="choose1">40bpm</label>
 
@@ -1806,7 +1822,7 @@
 
                                 <input type="radio" name="tempo" id="choose9">
                                 <label for="choose9">200-208bpm</label>
- 
+
                             </div>
 
                             <div class="tempo-btn">
@@ -1817,7 +1833,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
                     <!--播放器-->
                     <div class="play">
                         <div class="play-img">
@@ -1834,17 +1850,17 @@
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
-        
+
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
-        
-                        </div>  
+
+                        </div>
 
                         <div class="audio">
                             <audio id="audio-player1" controls></audio>
                         </div>
-                    
+
                     </div>
 
                 </div>
@@ -1857,7 +1873,7 @@
         <p>这是新的内容区域 3。</p>
         <button onclick="returnToContent2()">返回到内容2</button>
     </div>
-    
+
     <div class="tab-content" id="newContent4">
         <h2>新的内容区域 4</h2>
         <p>这是新的内容区域 4。</p>
@@ -1885,14 +1901,14 @@
 
         </div>
 
-        <form action="" ><!--後端程式碼-->
-        
+        <form action=""><!--後端程式碼-->
+
             <div class="tab-content-1">
                 <div class="tab-content-11" id="tab11">
                     <div class="tab11-person" data-tab="content-person1">
                         <img src="{% static 'images/memberimg.jpg' %}">
                         <h3>黃昱瑋</h3>
-                    </div>          
+                    </div>
                     <div class="tab11-person" data-tab="content-person2">
                         <img src="{% static 'images/memberimg.jpg' %}">
                         <h3>謝庭芝</h3>
@@ -1900,7 +1916,7 @@
                     <div class="tab11-person" data-tab="content-person3">
                         <img src="{% static 'images/memberimg.jpg' %}">
                         <h3>鄧如芳</h3>
-                    </div>          
+                    </div>
                     <div class="tab11-person" data-tab="content-person4">
                         <img src="{% static 'images/memberimg.jpg' %}">
                         <h3>陳念廷</h3>
@@ -1910,43 +1926,43 @@
                         <h3>新增更多</h3>
                     </div>
                 </div>
-                <div class="section2" id="content-person1" >
-                        <div class="one">
-                            <h5>1</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="one">
-                            <h5>2</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="one">
-                            <h5>3</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="one">
-                            <h5>4</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="one">
-                            <h5>5</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>
-                        <div class="one">
-                            <h5>6</h5>
-                            <audio controls>
-                                <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                            </audio>
-                        </div>               
+                <div class="section2" id="content-person1">
+                    <div class="one">
+                        <h5>1</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>2</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>3</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>4</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>5</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>6</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
                     <button type="button" class="music-btn" data-target="modal1">
                         <img src="{% static 'images/add2.png' %}">
                     </button>
@@ -1954,45 +1970,46 @@
                 <!--新增聲音-->
                 <div id="modal1" class="modal">
                     <div class="modal-content-music">
-                       <span class="close-voice" data-target="modal1"  title="Close Modal">&times;</span>
-                       <br><br> <br><br><h2>新增人聲</h2>
+                        <span class="close-voice" data-target="modal1" title="Close Modal">&times;</span>
+                        <br><br> <br><br>
+                        <h2>新增人聲</h2>
                         <div class="section1-voiceadd">
                             <h3 style="margin: 0px;">7</h3>
-                            
+
                             <div class="music-player">
-                             <h2>請清唱以下歌曲</h2>
-                             <h4> 一閃一閃亮晶晶　滿天都是小星星
-    
-                                掛在天上放光明　好像許多小眼睛
-                                
-                                一閃一閃亮晶晶　滿天都是小星星</h4>
-                                
-                            
-                             <div class="voicwave">
-                                 <img src="{% static 'images/audio.png' %}" alt="">
-                                 <img src="{% static 'images/audio.png' %}" alt="">
-                                 <img src="{% static 'images/audio-waves.png' %}" alt="">
-                                 <img src="{% static 'images/audio-waves.png' %}" alt="">
-                                 <img src="{% static 'images/audio-waves.png' %}" alt="">   
-                             </div>
-                             <div class="player-controls">
-                               <audio  id="audio-player" controls ></audio>
-                             </div>
+                                <h2>請清唱以下歌曲</h2>
+                                <h4> 一閃一閃亮晶晶　滿天都是小星星
+
+                                    掛在天上放光明　好像許多小眼睛
+
+                                    一閃一閃亮晶晶　滿天都是小星星</h4>
+
+
+                                <div class="voicwave">
+                                    <img src="{% static 'images/audio.png' %}" alt="">
+                                    <img src="{% static 'images/audio.png' %}" alt="">
+                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                </div>
+                                <div class="player-controls">
+                                    <audio id="audio-player" controls></audio>
+                                </div>
                             </div>
-                             <div class="section2-voiceadd">
-                             
+                            <div class="section2-voiceadd">
+
                                 <button id="record-button" class="s2-vd-1">開始錄音</button>
-                                <button type="button" class="s2-vd-2"  data-target="modal1">確定</button>
-                            
-                             </div>
+                                <button type="button" class="s2-vd-2" data-target="modal1">確定</button>
+
+                            </div>
                         </div>
-                      
+
                     </div>
                 </div>
-    
-    
-    
-                <div class="section2" id="content-person2"  style="display: none;">
+
+
+
+                <div class="section2" id="content-person2" style="display: none;">
                     <div class="one">
                         <h5>N1</h5>
                         <audio controls>
@@ -2031,106 +2048,106 @@
                     </div>
                     <button type="button" class="music-btn" data-target="modal1">
                         <img src="{% static 'images/add.png' %}">
-                    </button>                    
+                    </button>
                 </div>
-                <div class="section2" id="content-person3"  style="display: none;">
-                <div class="one">
-                    <h5>N1</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
+                <div class="section2" id="content-person3" style="display: none;">
+                    <div class="one">
+                        <h5>N1</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N2</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N3</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N4</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N5</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N6</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <button type="button" class="music-btn" data-target="modal1">
+                        <img src="{% static 'images/add.png' %}">
+                    </button>
                 </div>
-                <div class="one">
-                    <h5>N2</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
+                <div class="section2" id="content-person4" style="display: none;">
+                    <div class="one">
+                        <h5>N1</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N2</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N3</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N4</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N5</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <div class="one">
+                        <h5>N6</h5>
+                        <audio controls>
+                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
+                        </audio>
+                    </div>
+                    <button type="button" class="music-btn" data-target="modal1">
+                        <img src="{% static 'images/add.png' %}">
+                    </button>
                 </div>
-                <div class="one">
-                    <h5>N3</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N4</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N5</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N6</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <button type="button" class="music-btn" data-target="modal1">
-                    <img src="{% static 'images/add.png' %}">
-                </button>
-                </div>
-                <div class="section2" id="content-person4"  style="display: none;">
-                <div class="one">
-                    <h5>N1</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N2</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N3</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N4</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N5</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <div class="one">
-                    <h5>N6</h5>
-                    <audio controls>
-                        <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                    </audio>
-                </div>
-                <button type="button" class="music-btn" data-target="modal1">
-                    <img src="{% static 'images/add.png' %}">
-                </button>
-                </div>
-                <div class="section2" id="content-person5"  style="display: none;">
-                <div class="two">
-                    <div class="addnew">
-                        <div class="addnew-two"> 
-                            <img src="{% static 'images/add.png' %}">
-                            <h3>建立新人聲資料庫</h3>
+                <div class="section2" id="content-person5" style="display: none;">
+                    <div class="two">
+                        <div class="addnew">
+                            <div class="addnew-two">
+                                <img src="{% static 'images/add.png' %}">
+                                <h3>建立新人聲資料庫</h3>
+                            </div>
+
+                            <h3>創作時可以有不同人聲歌曲</h3><br>
                         </div>
-                        
-                        <h3>創作時可以有不同人聲歌曲</h3><br>
-                    </div>
-                    <div class="addbutton">
-                        <img src="{% static 'images/crown.png' %}">
-                        <button>開始訂閱</button>
+                        <div class="addbutton">
+                            <img src="{% static 'images/crown.png' %}">
+                            <button>開始訂閱</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         </form>
     </div>
@@ -2138,204 +2155,204 @@
 
     <!--創作-->
     <div class="tab-content" id="content4">
-            <div class="content4-creat">
-                
-                <div class="content4-creat-left">
+        <div class="content4-creat">
 
-                    <div class="c4-left-top">
+            <div class="content4-creat-left">
 
-                        <div class="c4-left-top-img">
-                            <img src="{% static images/creat1.png" alt="">
-                        </div>
+                <div class="c4-left-top">
 
-                        <div class="c4-creat-title">
-                            <h2>創作</h2>
-                        </div>
-
+                    <div class="c4-left-top-img">
+                        <img src="{% static images/creat1.png" alt="">
                     </div>
 
-                    <form action=""><!--後端程式碼-->
-                        <div class="c4-creat-step">
+                    <div class="c4-creat-title">
+                        <h2>創作</h2>
+                    </div>
 
-                            <div class="choose-songlist">
-                                <p>1.選擇歌單</p>
-                            </div>
-            
-                            <div class="songlist-option">
-                                <select name="songlist" id="" required>
-                                    <option value="" hidden></option>
-                                    <option value="">鄧紫棋合輯</option>
-                                    <option value="">The Weekend</option>
-                                    <option value="">周杰倫合輯</option>
-                                    <option value="">1234567</option>
-                                </select>
-                            </div>
-            
-                            <div class="choose-songlist">
-                                <p>2.選擇時長</p>
-                            </div>
-            
-                            <div class="songlist-option">
-                                <select name="timevalue" id="" required>
-                                    <option value="" hidden></option>
-                                    <option value="">1:00</option>
-                                    <option value="">2:00</option>
-                                    <option value="">3:00</option>
-                                </select>
-                            </div>
-        
-                            <div class="choose-songlist">
-                                <p>3.參數調整</p>
-                            </div>
-            
-                            <div class="adjustment">
-                                <fieldset class="adjustment1">
-                                    <legend>時長</legend>
-            
-                                    <input type="radio" name="duration" id="choose1">
-                                    <label for="choose1">1/4</label>
-            
-                                    <input type="radio" name="duration" id="choose2">
-                                    <label for="choose2">1/8</label>
-            
-                                    <input type="radio" name="duration" id="choose3">
-                                    <label for="choose3">1/16</label>
-            
-                                    <input type="radio" name="duration" id="choose4">
-                                    <label for="choose4">1/2</label>
-            
-                                    <input type="radio" name="duration" id="choose5">
-                                    <label for="choose5">1</label>
-                                            
-                                </fieldset>
-            
-                                <fieldset class="adjustment2">
-    
-                                    <legend>音高(MIDI編號)</legend>
-                                        
-                                    <input type="number" name="pitch" id="" min="0" max="127" value="1">
-                                    
-                                    <div class="memo">
-                                        <ul>
-                                            <li>中央C: 60 / D音: 62 / E音: 64</li>
-                                            <li>F音: 65 / G音: 67 / A音: 69 / B音: 71</li>
-                                             
-                                        </ul>
-                                    </div>     
-    
-                                </fieldset>
-            
-                                <fieldset class="adjustment2">
-    
-                                    <legend>強度</legend>
-                                       
-                                    <input type="number" name="pitch" id="" min="0" max="127" value="1">
-            
-                                    <div class="memo">
-                                        <ul>
-                                            <li>0: 静音，表示音符被完全壓低，没有声音。</li>
-                                            <li>1-63: 較輕的音符，通常表示柔和或抑制的演奏。</li>
-                                            <li>64-95: 中等音量的音符，通常表示正常演奏。</li>
-                                            <li>96-127: 較大音量的音符，通常表示强烈的演奏或强重音。</li>
-                                        </ul>
-                                    </div>
-                                        
-                                </fieldset>
-            
-                            </div>
-        
-                            <div class="generate-btn">
-                                <button>
-                                    <p>生成</p>
-                                </button>
-                            </div>
-                         
-                        </div>
-
-                    </form>
                 </div>
-    
-                
-                <div class="content4-creat-right">
-                    <form action=""><!--後端程式碼-->
-                        <div class="c4-r-choose-songlist">
-                            <p>4.片段試聽</p>
-                        </div>
-        
-                        <div class="c4-r-play">
-                            <audio id="" controls></audio>
-        
-                        </div>
-        
+
+                <form action=""><!--後端程式碼-->
+                    <div class="c4-creat-step">
+
                         <div class="choose-songlist">
-                            <p>6.輸入歌詞</p>
+                            <p>1.選擇歌單</p>
                         </div>
-    
-                        <div class="c4-r-lyrics">
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
-                        </div>
-        
-                        <div class="choose-songlist">
-                            <p>7.選擇人聲</p>
-                        </div>
-    
-                        <div class="c4-r-choose-voice">
-                            <select name="c4-r-choose-voice" id="">
+
+                        <div class="songlist-option">
+                            <select name="songlist" id="" required>
                                 <option value="" hidden></option>
-                                <option value="">黃昱瑋</option>
-                                <option value="">謝庭芝</option>
-                                <option value="">鄧如芳</option>
-                                <option value="">陳念廷</option>
+                                <option value="">鄧紫棋合輯</option>
+                                <option value="">The Weekend</option>
+                                <option value="">周杰倫合輯</option>
+                                <option value="">1234567</option>
                             </select>
                         </div>
-        
+
                         <div class="choose-songlist">
-                            <p>8.輸入歌名</p>
+                            <p>2.選擇時長</p>
                         </div>
-        
-                        <div class="c4-r-add-songname">
-                            <input type="text" class="" placeholder="">
+
+                        <div class="songlist-option">
+                            <select name="timevalue" id="" required>
+                                <option value="" hidden></option>
+                                <option value="">1:00</option>
+                                <option value="">2:00</option>
+                                <option value="">3:00</option>
+                            </select>
                         </div>
-        
+
                         <div class="choose-songlist">
-                            <p>9.上傳圖片</p>
+                            <p>3.參數調整</p>
                         </div>
-        
-                        <form id="myform" method="" action="" enctype="multipart/form-data"> 
-                            <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png"><br>
-                        </form>
-        
+
+                        <div class="adjustment">
+                            <fieldset class="adjustment1">
+                                <legend>時長</legend>
+
+                                <input type="radio" name="duration" id="choose1">
+                                <label for="choose1">1/4</label>
+
+                                <input type="radio" name="duration" id="choose2">
+                                <label for="choose2">1/8</label>
+
+                                <input type="radio" name="duration" id="choose3">
+                                <label for="choose3">1/16</label>
+
+                                <input type="radio" name="duration" id="choose4">
+                                <label for="choose4">1/2</label>
+
+                                <input type="radio" name="duration" id="choose5">
+                                <label for="choose5">1</label>
+
+                            </fieldset>
+
+                            <fieldset class="adjustment2">
+
+                                <legend>音高(MIDI編號)</legend>
+
+                                <input type="number" name="pitch" id="" min="0" max="127" value="1">
+
+                                <div class="memo">
+                                    <ul>
+                                        <li>中央C: 60 / D音: 62 / E音: 64</li>
+                                        <li>F音: 65 / G音: 67 / A音: 69 / B音: 71</li>
+
+                                    </ul>
+                                </div>
+
+                            </fieldset>
+
+                            <fieldset class="adjustment2">
+
+                                <legend>強度</legend>
+
+                                <input type="number" name="pitch" id="" min="0" max="127" value="1">
+
+                                <div class="memo">
+                                    <ul>
+                                        <li>0: 静音，表示音符被完全壓低，没有声音。</li>
+                                        <li>1-63: 較輕的音符，通常表示柔和或抑制的演奏。</li>
+                                        <li>64-95: 中等音量的音符，通常表示正常演奏。</li>
+                                        <li>96-127: 較大音量的音符，通常表示强烈的演奏或强重音。</li>
+                                    </ul>
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+
                         <div class="generate-btn">
-                            <button id="openModalBtn">
-                                <p>完成</p>
+                            <button>
+                                <p>生成</p>
                             </button>
-                        </div>    
-                        
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+
+
+            <div class="content4-creat-right">
+                <form action=""><!--後端程式碼-->
+                    <div class="c4-r-choose-songlist">
+                        <p>4.片段試聽</p>
+                    </div>
+
+                    <div class="c4-r-play">
+                        <audio id="" controls></audio>
+
+                    </div>
+
+                    <div class="choose-songlist">
+                        <p>6.輸入歌詞</p>
+                    </div>
+
+                    <div class="c4-r-lyrics">
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+
+                    <div class="choose-songlist">
+                        <p>7.選擇人聲</p>
+                    </div>
+
+                    <div class="c4-r-choose-voice">
+                        <select name="c4-r-choose-voice" id="">
+                            <option value="" hidden></option>
+                            <option value="">黃昱瑋</option>
+                            <option value="">謝庭芝</option>
+                            <option value="">鄧如芳</option>
+                            <option value="">陳念廷</option>
+                        </select>
+                    </div>
+
+                    <div class="choose-songlist">
+                        <p>8.輸入歌名</p>
+                    </div>
+
+                    <div class="c4-r-add-songname">
+                        <input type="text" class="" placeholder="">
+                    </div>
+
+                    <div class="choose-songlist">
+                        <p>9.上傳圖片</p>
+                    </div>
+
+                    <form id="myform" method="" action="" enctype="multipart/form-data">
+                        <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png"><br>
                     </form>
-                    
-                    <!--彈跳視窗-->
-                    <div class="modal" id="myModal">
-                        <div class="modal-content">
-                            <span class="close" id="closeModalBtn">&times;</span>
 
-                            <div class="finish-img">
-                                <img src="{% static 'images/check-mark.png' %}" alt="">
-                            </div>
+                    <div class="generate-btn">
+                        <button id="openModalBtn">
+                            <p>完成</p>
+                        </button>
+                    </div>
 
-                            <div class="finish-txt">
-                                <p>歌曲已完成</p>
-                            </div>
-    
-                            <div class="finish-btn">
-                                <button id="closeModalAndMaskBtn">
-                                    <p>確定</p>
-                                </button>
-                            </div>
+                </form>
+
+                <!--彈跳視窗-->
+                <div class="modal" id="myModal">
+                    <div class="modal-content">
+                        <span class="close" id="closeModalBtn">&times;</span>
+
+                        <div class="finish-img">
+                            <img src="{% static 'images/check-mark.png' %}" alt="">
+                        </div>
+
+                        <div class="finish-txt">
+                            <p>歌曲已完成</p>
+                        </div>
+
+                        <div class="finish-btn">
+                            <button id="closeModalAndMaskBtn">
+                                <p>確定</p>
+                            </button>
                         </div>
                     </div>
-        
                 </div>
+
             </div>
+        </div>
     </div>
 
     <!--設定-->
@@ -2362,53 +2379,53 @@
             <div class="setting-account-manage">
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/profile-user.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>個人資料</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/music.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>追蹤歌手</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/revision.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>修改密碼</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/subscribe.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>訂閱項目</p>
                     </div>
-        
+
                 </div>
-                
+
             </div>
 
             <div class="content6-setting-title">
@@ -2418,62 +2435,62 @@
             <div class="setting-account-manage">
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/manual.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>使用說明</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/question.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>常見問題</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/recovery.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>問題回報</p>
                     </div>
-        
+
                 </div>
 
                 <div class="manage-item">
-    
+
                     <div class="manage-item-img">
                         <img src="{% static 'images/id-card.png' %}" alt="">
                     </div>
-        
+
                     <div class="manage-item-txt">
                         <p>關於</p>
                     </div>
-        
+
                 </div>
-                
+
 
             </div>
 
-            
+
 
         </div>
-        
 
-        
+
+
     </div>
 
 
@@ -2513,29 +2530,29 @@
                         </button>
 
                     </div>
-                    
+
                 </div>
 
-                
+
                 <div class="newContent-buttom">
                     <ul id="playlist2">
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>01</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2543,50 +2560,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>02</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2594,50 +2611,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>03</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2645,50 +2662,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>04</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2696,50 +2713,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>05</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2747,50 +2764,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>06</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2798,50 +2815,50 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
 
                         <section class="songlist-box">
-    
+
                             <div class="nl-songlist">
-        
+
                                 <div class="song-num">
                                     <p>07</p>
                                 </div>
-        
+
                                 <div class="dash">
                                     <p>-</p>
                                 </div>
-                    
+
                                 <div class="songimg">
                                     <img src="{% static 'images/memberimg.jpg' %}" alt="">
                                 </div>
-        
+
                                 <div class="songtxt">
                                     <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
@@ -2849,38 +2866,38 @@
                                         </div>
 
                                     </li>
-                                    
+
                                     <div class="song-singer">
                                         <p>鄧紫棋</p>
                                     </div>
                                 </div>
                             </div>
-        
+
                             <div class="songlist-icon">
                                 <div class="songlist-icon-time">
                                     <p>3:56</p>
                                 </div>
-                                
+
                                 <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>
 
                                 </li>
-                                
+
 
                                 <div class="delete-img">
                                     <img src="{% static 'images/delete.png' %}" alt="">
                                 </div>
-                                
+
                             </div>
-        
+
                         </section>
-                
+
                     </ul>
-                    
+
                 </div>
-                
+
             </div>
 
 
@@ -2890,10 +2907,10 @@
                         <div class="nr-tempo-title">
                             <p>速度 Tempo</p>
                         </div>
-                        <form action="" ><!--後端程式碼判斷選項目-->
+                        <form action=""><!--後端程式碼判斷選項目-->
                             <div class="nr-tempo-choose">
 
-                            
+
                                 <input type="radio" name="tempo" id="choose1">
                                 <label for="choose1">40bpm</label>
 
@@ -2920,7 +2937,7 @@
 
                                 <input type="radio" name="tempo" id="choose9">
                                 <label for="choose9">200-208bpm</label>
- 
+
                             </div>
 
                             <div class="tempo-btn">
@@ -2932,7 +2949,7 @@
                         </form>
 
                     </div>
-    
+
                     <!--播放器-->
                     <div class="play">
                         <div class="play-img">
@@ -2949,27 +2966,27 @@
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
                             <img src="{% static 'images/audio.png' %}" alt="">
-        
+
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
                             <img src="{% static 'images/audio-waves.png' %}" alt="">
-        
-                        </div>  
+
+                        </div>
 
                         <div class="audio">
                             <audio id="audio-player2" controls></audio>
                         </div>
-                    
+
                     </div>
 
                 </div>
-                
-    
+
+
             </div>
 
         </div>
 
-        
+
 
 
     </div>
@@ -2981,17 +2998,18 @@
     <script src="{% static 'js/index3.js' %}" defer></script>
     <script src="{% static 'js/index4.js' %}" defer></script>
     <script src="{% static 'js/voice2.js' %}" defer></script>
-   
+
     <script src="{% static 'js/close.js' %}" defer></script>
     <script src="{% static 'js/singing.js' %}"></script>
 
-    
 
-    
+
+
 
 
 
 
 
 </body>
+
 </html>

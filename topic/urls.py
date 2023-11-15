@@ -14,27 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
-from topic_app.views import sayhello,show,bye,add_data,index_start
+from django.urls import path, re_path
+from topic_app.views import sayhello, show, bye, add_data, index_start
 from topic_app.views import login_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-
-    path("index",sayhello), # 跳Hello django
-
-    path("bye",bye), # 說拜拜
-
-    re_path(r'^show/(\w+)/$', show ,name = "show"),
-
+    path("index", sayhello),  # 跳Hello django
+    path("bye", bye),  # 說拜拜
+    re_path(r'^show/(\w+)/$', show, name="show"),
     path('add_data', add_data, name='add_data'),
-
-    #正式程式 fighting
-
-    path("",index_start), # 說拜拜
-
-    path('login/', login_view, name='login'),#定義一個 URL 路徑 '/login/'
-
-
-
+    # 正式程式 fighting
+    path("", index_start),  # 說拜拜
+    path('login/', login_view, name='login'),  # 定義一個 URL 路徑 '/login/'
 ]

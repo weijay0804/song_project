@@ -1,73 +1,77 @@
-.c2-top{
+.c2-top {
     display: flex;
     margin: 10px 0 10px 0;
 }
 
-.c2-top-img{
-    margin:20px 10px 0 30px;
+.c2-top-img {
+    margin: 20px 10px 0 30px;
 }
 
-.c2-top-img>img,.top-img-add>img{
+.c2-top-img>img,
+.top-img-add>img {
     width: 30px;
     height: 30px;
 }
 
-.c2-top-title>h2{
+.c2-top-title>h2 {
     color: #181534;
 }
 
-.top-img-add{
-    margin: 20px 0 0 1200px ;
+.top-img-add {
+    margin: 20px 0 0 1200px;
     cursor: pointer;
 }
 
-.c2-songlist{
+.c2-songlist {
     display: grid;
     grid-template-columns: auto auto auto auto;
     row-gap: 15px;
     justify-content: space-around;
 }
 
-.c2-songlist-img>img{
+.c2-songlist-img>img {
     width: 290px;
     height: 210px;
     border-radius: 15px;
 }
-.c2-songlist-name{
+
+.c2-songlist-name {
     padding: 0 0 0 10px;
 }
-.c2-songlist-name>p{
+
+.c2-songlist-name>p {
     font-size: medium;
     font-weight: bold;
 
 }
 
 /*新內容區*/
-.newcontent{
+.newcontent {
     display: flex;
     padding: 20px;
 }
 
-.newcontent-left{
-    flex:4;
+.newcontent-left {
+    flex: 4;
     padding: 0 20px 20px 20px;
 }
 
-.newcontent-right{
-    flex:1;
-}
-.newContent-top{
-    display: flex;
-    margin: 0 0 30px 0;   
+.newcontent-right {
+    flex: 1;
 }
 
-.back-button{
+.newContent-top {
+    display: flex;
+    margin: 0 0 30px 0;
+}
+
+.back-button {
     margin: 15px 0 0 0;
     display: flex;
     justify-content: center;
 }
 
-.back-button>button{
+.back-button>button {
     /*去除button樣式*/
     margin: 0;
     padding: 0;
@@ -75,18 +79,21 @@
     outline: none;
     background-color: transparent;
 }
-.back-btn-img>img{
+
+.back-btn-img>img {
     width: 45px;
     height: 45px;
 }
 
-.top-title{
-    margin:10px 25px 0 20px;
+.top-title {
+    margin: 10px 25px 0 20px;
 }
-.all-play-button{
-    margin:30px 0 0 545px;
+
+.all-play-button {
+    margin: 30px 0 0 545px;
 }
-.all-play-button>button{
+
+.all-play-button>button {
     /*去除button樣式*/
     margin: 0;
     padding: 0;
@@ -100,109 +107,120 @@
     padding: 0 10px;
 
     display: flex;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     cursor: pointer;
 }
 
-.all-play-button-icon>img{
+.all-play-button-icon>img {
     width: 15px;
     height: 15px;
 }
 
-.all-play-button-txt>p{
+.all-play-button-txt>p {
     color: white;
 }
 
-.newContent-buttom{
+.newContent-buttom {
     height: 710px;
     overflow: scroll;
 }
 
-.songlist-box{
+.songlist-box {
     display: flex;
     justify-content: space-between;
     padding: 10px 25px;
-    border-bottom: 1px solid rgba(0,0,0,.125);
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
 
-.nl-songlist{
+.nl-songlist {
     display: flex;
     margin: 0 100px 0 0;
     flex: 3;
     justify-content: left;
 }
-.song-num,.dash,.songimg{
+
+.song-num,
+.dash,
+.songimg {
     margin: 0 20px 0 0;
 }
-.song-num{
+
+.song-num {
     position: relative;
-    top:5px;
+    top: 5px;
 }
-.song-num>p{
+
+.song-num>p {
     font-size: 18px;
-    color:#444;
+    color: #444;
 }
-.dash{
+
+.dash {
     position: relative;
     bottom: 8px;
 }
-.dash>p{
+
+.dash>p {
     font-size: 25px;
 }
 
-.songimg>img{
+.songimg>img {
     width: 70px;
     height: 70px;
     border-radius: 15px;
 }
-.songtxt{
+
+.songtxt {
     position: relative;
     bottom: 5px;
 }
-.song-name{
+
+.song-name {
     cursor: pointer;
 }
 
-.song-name>p{
+.song-name>p {
     font-size: 15px;
     font-weight: bold;
 }
-.song-singer>p{
+
+.song-singer>p {
     font-size: smaller;
     opacity: 60%;
 }
 
-.songlist-icon-time,.more{
+.songlist-icon-time,
+.more {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.songlist-icon{
+.songlist-icon {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex: 2;
 }
 
-.more{
+.more {
     cursor: pointer;
 }
 
-.more>img{
+.more>img {
     width: 20px;
     height: 20px;
 }
 
-.newcontent-right{
+.newcontent-right {
     padding: 20px 0 0 40px;
     display: flex;
     justify-content: center;
 }
 
 /*速度*/
-.nr-tempo{
+.nr-tempo {
     background-color: #181534;
     width: 300px;
     height: 270px;
@@ -211,48 +229,48 @@
     padding: 5px 25px;
 }
 
-.nr-tempo-title{
-    margin:0 0 10px 0;
+.nr-tempo-title {
+    margin: 0 0 10px 0;
 }
 
-.nr-tempo-title>p{
+.nr-tempo-title>p {
     color: white;
 }
 
-.nr-tempo-choose{
+.nr-tempo-choose {
     display: grid;
     grid-template-columns: auto auto auto auto;
     row-gap: 10px;
 }
 
-.nr-tempo-choose>label{
+.nr-tempo-choose>label {
     color: white;
     font-size: small;
 }
 
-.tempo-btn{
+.tempo-btn {
     display: flex;
     justify-content: center;
-    margin:30px 0 0 0;
+    margin: 30px 0 0 0;
 }
 
-.tempo-btn>button{
-   /*去除button樣式*/
-   margin: 0;
-   padding: 0;
-   border: none;
-   outline: none;
-   background-color: transparent;
+.tempo-btn>button {
+    /*去除button樣式*/
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
 
-   background-color: #fff;
-   width: 100px;
-   height: 35px;
-   border-radius: 15px;
+    background-color: #fff;
+    width: 100px;
+    height: 35px;
+    border-radius: 15px;
 
-   display: flex;
-   justify-content:space-around;
-   align-items: center;
-   cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
 }
 
 /*愛心*/
@@ -262,7 +280,7 @@
     cursor: pointer;
     position: relative;
 }
-  
+
 .heart::before,
 .heart::after {
     content: '';
@@ -271,23 +289,25 @@
     width: 10px;
     height: 16px;
     border-radius: 10px 10px 0 0;
-    background: #656464; /* 初始狀態為灰色*/
-    
+    background: #656464;
+    /* 初始狀態為灰色*/
+
 }
-  
+
 .heart::before {
     left: 10px;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
 }
-  
+
 .heart::after {
     left: 0;
     transform: rotate(45deg);
     transform-origin: 100% 100%;
 }
-  
+
 .heart.clicked::before,
 .heart.clicked::after {
-    background:#f9595f; /*點擊後變成紅色*/
+    background: #f9595f;
+    /*點擊後變成紅色*/
 }
