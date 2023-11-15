@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse  # 顯示文字 =System.out.print....
+from django.http import HttpResponse, HttpResponseRedirect  # 顯示文字 =System.out.print....
 from datetime import datetime  # 現在時間
 from django.db import connection  # 連接資料庫
 from django.shortcuts import redirect  # 返回某個urls的函數
-from .models import User
+from django.contrib import messages
 
 
 # Hello django
@@ -37,18 +37,20 @@ def add_data(request):
 
 # 首頁
 def index_start(request):
-    return render(request, 'index.html')  # 執行結束後跳回index
+    is_login = request.session.get("is_login", False)
+
+    return render(request, 'index.html', {"is_login": is_login})  # 執行結束後跳回index
 
 
-def validate_login(username, password):
-    # 在這裡實現登入驗證的邏輯
-    # 例如，你可以使用資料庫查詢來驗證使用者名稱和密碼
+# def validate_login(username, password):
+#     # 在這裡實現登入驗證的邏輯
+#     # 例如，你可以使用資料庫查詢來驗證使用者名稱和密碼
 
-    try:
-        user = User.objects.get(username=username, password=password)
-        return True
-    except User.DoesNotExist:
-        return False
+#     try:
+#         user = User.objects.get(username=username, password=password)
+#         return True
+#     except User.DoesNotExist:
+#         return False
 
 
 def login_view(request):
@@ -56,11 +58,30 @@ def login_view(request):
         username = request.POST['uname']
         password = request.POST['psw']
 
-        # 下面是登入的邏輯
-        authentication_successful = validate_login(username, password)
+        cursor = connection.cursor()
 
-        if authentication_successful:
-            return render(request, 'index.html')
+        cursor.execute("SELECT member_acc, mail, password FROM member WHERE mail=%s", (username))
+
+        user = cursor.fetchone()
+
+        if user is None or user[-1] != password:
+            messages.info(request, "使用者或密碼輸入錯誤")
+
         else:
-            return render(request, 'index.html')
-    return render(request, 'index.html')
+            messages.success(request, "登入成功")
+            request.session["is_login"] = True
+            request.session["user_id"] = user[0]
+            request.session["user_email"] = user[1]
+
+        cursor.close()
+
+    return redirect("home")
+
+
+def logout_view(request):
+    if request.session.get("is_login"):
+        request.session.flush()
+
+    messages.success(request, "你已經登出")
+
+    return redirect("home")

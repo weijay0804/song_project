@@ -27,7 +27,6 @@
 </head>
 
 <body>
-
     <div class="tabs">
         <div class="member">
             <div class="member-img">
@@ -35,13 +34,17 @@
             </div>
 
             <div class="member-name" style="display: flex;">
+                {% if not is_login %}
                 <button class="btn01" onclick="document.getElementById('id01').style.display='block'"
                     style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">登入</button>
+
                 <button class="btn01" onclick="document.getElementById('id02').style.display='block'"
                     style="width:45%; background-color: white; color: black; margin: 2%;font-size:15px;width: auto; ">註冊</button>
+                {% endif %}
             </div>
             <div class="title">
                 <!--登入-->
+                {% if not is_login %}
                 <div class="logins">
                     <div id="id01" class="modallog">
                         <!--後端登入程式碼-->
@@ -69,6 +72,7 @@
                         </form>
                     </div>
                 </div>
+
                 <!--註冊-->
                 <div class="register">
                     <div id="id02" class="modallog">
@@ -213,13 +217,12 @@
                                     </div>
                                     <button onclick="document.getElementById('id02').style.display='none'" class="btn01"
                                         type="button" style="align-items: center;">確定</button><br>
-
                                 </main>
-
                             </div>
                         </form>
                     </div>
                 </div>
+                {% endif %}
             </div>
 
 
@@ -290,16 +293,19 @@
         </div>
 
         <!--登出--> <!--後端程式碼-->
-        <form action="">
-            <div class="logout">
-                <div class="logout-img">
-                    <img src="{% static 'images/logout.png' %}" alt="">
-                </div>
-                <div class="logout-txt">
-                    <p>登出</p>
-                </div>
+        {% if is_login %}
+        <div class="logout">
+            <div class="logout-img">
+                <img src="{% static 'images/logout.png' %}" alt="">
             </div>
-        </form>
+            <div class="logout-txt">
+                <a href="{% url 'logout' %}">
+                    <p>登出</p>
+                </a>
+
+            </div>
+        </div>
+        {% endif %}
 
 
     </div>
@@ -2992,7 +2998,6 @@
     </div>
 
 
-
     <script src="{% static 'js/index.js' %}" defer></script>
     <script src="{% static 'js/index2.js' %}" defer></script>
     <script src="{% static 'js/index3.js' %}" defer></script>
@@ -3002,13 +3007,13 @@
     <script src="{% static 'js/close.js' %}" defer></script>
     <script src="{% static 'js/singing.js' %}"></script>
 
-
-
-
-
-
-
-
+    {% if messages %}
+    {% for msg in messages %}
+    <script>
+        alert('{{msg}}');
+    </script>
+    {% endfor %}
+    {% endif %}
 
 </body>
 
