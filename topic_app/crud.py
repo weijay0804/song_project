@@ -56,3 +56,25 @@ def add_user(username: str, password: str, email: str, is_vip: str = "1") -> Non
             "INSERT INTO member(member_acc, password, mail, isvip) VALUES(%s, %s, %s, %s)",
             [username, password, email, is_vip],
         )
+
+
+def get_relation_singer(username: str, limit=7) -> list:
+    """根據使用者的 love singer 取得曲風最多的歌手"""
+
+    command = """
+    SELECT s.singer, COUNT(s.singer) AS count_singer
+    FROM love_singer AS l
+    JOIN singer_relation AS s
+    ON l.singer = s.singer
+    WHERE l.member_acc = %s
+    GROUP BY s.singer
+    ORDER BY count_singer DESC
+    LIMIT %s
+    """
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [username, limit])
+
+        result = cursor.fetchall()
+
+    return [s[0] for s in result]

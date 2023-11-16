@@ -308,71 +308,25 @@
                 </div>
 
                 <div class="trending-artist">
+
+                    {% if is_login %}
+
+                    {% for singer in love_relation_singer %}
                     <div class="artist">
                         <div class="artist-img">
                             <img src="{% static 'images/memberimg.jpg' %}" alt="">
                         </div>
                         <div class="artist-name">
-                            <p>周杰倫</p>
+                            <p>{{ singer }}</p>
                         </div>
-
                     </div>
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>蔡依林</p>
-                        </div>
+                    {% endfor %}
 
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>周興哲</p>
-                        </div>
+                    {% else %}
 
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>林俊傑</p>
-                        </div>
+                    <h4>請先登入</h4>
 
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>張惠妹</p>
-                        </div>
-
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>A-Lin</p>
-                        </div>
-
-                    </div>
-
-                    <div class="artist">
-                        <div class="artist-img">
-                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
-                        </div>
-                        <div class="artist-name">
-                            <p>張碧晨</p>
-                        </div>
-
-                    </div>
-
+                    {% endif %}
                 </div>
 
                 <!--我的歌單-->

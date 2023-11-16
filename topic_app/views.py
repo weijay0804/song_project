@@ -27,6 +27,10 @@ def index_start(request):
             singers = [s[0] for s in singers]
             content["singers"] = singers
 
+        love_relation_singer = crud.get_relation_singer(username)
+
+        content["love_relation_singer"] = love_relation_singer
+
     return render(request, 'index.html', content)  # 執行結束後跳回index
 
 
