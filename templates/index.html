@@ -43,6 +43,7 @@
                 {% endif %}
             </div>
             <div class="title">
+
                 <!--登入-->
                 {% if not is_login %}
                 <div class="logins">
@@ -102,15 +103,16 @@
                                     onclick="showNextStep()">註冊</button><br>
                             </div>
                         </form>
+                    </div>
+                </div>
+                {% endif %}
 
-                        <!--選擇喜愛歌手-->
-                        <!--後端選擇歌手程式碼-->
+                <!-- 選擇喜愛歌手 -->
+                {% if is_first and is_login %}
+                <div class="favorite_singer">
+                    <div id="id03" class="modallog" style="display: block;">
                         <form class="modal-content1 animate page-content" action="" method="post" id="page2"
-                            style=" overflow: auto;">
-                            <div class="imgcontainer">
-                                <span onclick="document.getElementById('id02').style.display='none'" class="closelog"
-                                    title="Close Modal">&times;</span>
-                            </div>
+                            style="overflow: auto; display: block;">
 
                             <div class="container" style="max-height: 80vh; "><br>
                                 <h1 style="text-align: center;margin: 0%;">選擇你喜歡的歌手</h1>
@@ -128,7 +130,6 @@
                                                 <img class="check" src="{% static 'images/check.png' %}">
                                                 <img class="singimg2" src="{% static 'images/dan.jpg' %}">
                                                 <h4>鄧紫棋</h4>
-
                                             </div>
                                             <div class="one-group">
                                                 <img class="check" src="{% static 'images/check.png' %}">
@@ -215,8 +216,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button onclick="document.getElementById('id02').style.display='none'" class="btn01"
-                                        type="button" style="align-items: center;">確定</button><br>
+                                    <button class="btn01" type="button" style="align-items: center;">確定</button><br>
                                 </main>
                             </div>
                         </form>
@@ -224,10 +224,6 @@
                 </div>
                 {% endif %}
             </div>
-
-
-
-
         </div>
 
         <div class="menu">

@@ -205,6 +205,12 @@ footer {
   margin-left: -250px;
 }
 
+.favorite_singer {
+  display: block;
+  padding-top: 10px;
+  margin-left: -130px;
+}
+
 /* Full-width input fields */
 .container>input[type=text],
 .container>input[type=password] {

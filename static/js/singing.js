@@ -17,7 +17,9 @@ imageGroups.forEach(function (group) {
 const registerModal = document.getElementById('id01');
 // 設置註冊步驟的索引
 let registerStepIndex = 1;
-document.getElementById('page2').style.display = 'none';
+
+//document.getElementById('page2').style.display = 'none';
+
 // 顯示下一步註冊步驟
 function showNextStep() {
   if (registerStepIndex === 1) {
@@ -26,6 +28,7 @@ function showNextStep() {
     registerStepIndex = 2;
   };
 }
+
 // 獲取關閉按鈕和 modal 元素
 const closeButton = document.getElementById('closeButton');
 const modal = document.getElementById('id02'); // 假設 modal 的 id 是 "myModal"
