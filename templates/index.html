@@ -31,6 +31,9 @@
         <div class="member">
             <div class="member-img">
                 <img src="{% static 'images/memberimg.jpg' %}" alt="">
+                {% if is_login %}
+                <h4>{{ username }}</h4>
+                {% endif %}
             </div>
 
             <div class="member-name" style="display: flex;">
@@ -58,15 +61,20 @@
 
                             <div class="container"><br>
                                 <h1 style="text-align: center;color: aliceblue;">歡迎使用 音你而定</h1><br>
-                                <label for="uname" style="color: aliceblue;size: 10px;"><b><br>帳號：</b></label>
+
+                                <label for="uname" style="color: aliceblue;size: 10px;">
+                                    <b><br>帳號：</b>
+                                </label>
                                 <input type="text" placeholder="請輸您的帳號" name="uname" required
                                     style="border-radius: 10px;">
                                 <br>
-                                <label for="psw" style="color: aliceblue;size: 10px;"><b><br>密碼：</b>
-                                    <h5>累積錯誤次數最多3次</h5>
+
+                                <label for="psw" style="color: aliceblue;size: 10px;">
+                                    <b><br>密碼：</b>
                                 </label>
                                 <input type="password" placeholder="請輸入您的密碼" name="psw" required
                                     style="border-radius: 10px;"><br><br>
+
                                 <button onclick="document.getElementById('id01').style.display='none'" class="btn01"
                                     type="submit" style="align-items: center;">確定</button><br>
                             </div>
@@ -78,7 +86,9 @@
                 <div class="register">
                     <div id="id02" class="modallog">
                         <!--後端註冊系統-->
-                        <form class="modal-content1 animate page-content" action="" method="post" id="page1">
+                        <form class="modal-content1 animate page-content" action="{% url 'register' %}" method="post"
+                            id="page1">
+                            {% csrf_token %}
                             <div class="imgcontainer">
                                 <span onclick="document.getElementById('id02').style.display='none'" class="closelog"
                                     title="Close Modal">&times;</span>
@@ -90,8 +100,8 @@
                                 <input type="text" placeholder="請輸入您的姓名" name="uname" required
                                     style="border-radius: 10px;">
                                 <br>
-                                <label for="psw" style="color: aliceblue;size: 10px;"><b><br>電子郵件：</b></label>
-                                <input type="password" placeholder="請輸入您的電子郵件" name="psw" required
+                                <label for="email" style="color: aliceblue;size: 10px;"><b><br>電子郵件：</b></label>
+                                <input type="text" placeholder="請輸入您的電子郵件" name="email" required
                                     style="border-radius: 10px;">
                                 <br>
                                 <label for="psw" style="color: aliceblue;size: 10px;"><b><br>設定密碼：</b></label>

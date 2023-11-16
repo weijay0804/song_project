@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from topic_app.views import sayhello, show, bye, add_data, index_start
-from topic_app.views import login_view, logout_view
+from topic_app.views import login_view, logout_view, register_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -28,4 +28,5 @@ urlpatterns = [
     path("", index_start, name="home"),  # 說拜拜
     path('login/', login_view, name='login'),  # 定義一個 URL 路徑 '/login/'
     path("logout/", logout_view, name="logout"),
+    path("register/", register_view, name="register"),
 ]

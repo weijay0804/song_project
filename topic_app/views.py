@@ -37,20 +37,25 @@ def add_data(request):
 
 # 首頁
 def index_start(request):
-    is_login = request.session.get("is_login", False)
+    content = {}
 
-    return render(request, 'index.html', {"is_login": is_login})  # 執行結束後跳回index
+    if request.session.get("is_login"):
+        content["is_login"] = True
+        content["username"] = request.session.get("username")
 
+        username = request.session["username"]
 
-# def validate_login(username, password):
-#     # 在這裡實現登入驗證的邏輯
-#     # 例如，你可以使用資料庫查詢來驗證使用者名稱和密碼
+        cursor = connection.cursor()
+        cursor.execute("SELECT COUNT(sn) FROM love_singer WHERE member_acc = %s", [username])
 
-#     try:
-#         user = User.objects.get(username=username, password=password)
-#         return True
-#     except User.DoesNotExist:
-#         return False
+        result = cursor.fetchall()[0][0]
+
+        if result < 3:
+            content["is_first"] = True
+
+        cursor.close()
+
+    return render(request, 'index.html', content)  # 執行結束後跳回index
 
 
 def login_view(request):
@@ -60,7 +65,7 @@ def login_view(request):
 
         cursor = connection.cursor()
 
-        cursor.execute("SELECT member_acc, mail, password FROM member WHERE mail=%s", (username))
+        cursor.execute("SELECT member_acc, password FROM member WHERE member_acc=%s", (username))
 
         user = cursor.fetchone()
 
@@ -70,11 +75,39 @@ def login_view(request):
         else:
             messages.success(request, "登入成功")
             request.session["is_login"] = True
-            request.session["user_id"] = user[0]
-            request.session["user_email"] = user[1]
+            request.session["username"] = user[0]
 
         cursor.close()
 
+    return redirect("home")
+
+
+def register_view(request):
+    if request.method == "POST":
+        username = request.POST["uname"]
+        email = request.POST["email"]
+        pwd = request.POST["psw"]
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT member_acc FROM member WHERE member_acc = %s", [username])
+
+        user = cursor.fetchone()
+
+        if user:
+            messages.info(request, "使用者已經存在")
+
+        else:
+            cursor.execute(
+                "INSERT INTO member(member_acc, password, mail, isvip) VALUES(%s, %s, %s, %s)",
+                [username, pwd, email, "1"],
+            )
+            messages.success(request, "註冊成功")
+
+            request.session["is_login"] = True
+            request.session["username"] = username
+
+        cursor.close()
     return redirect("home")
 
 
