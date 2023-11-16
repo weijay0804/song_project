@@ -102,3 +102,32 @@ def get_song_list(username: str, limit: int = 5) -> list:
     data = [{"list_name": d[0], "count": d[1]} for d in result]
 
     return data
+
+
+def get_user_sound(username: str, limit: int = 100) -> dict:
+    """取得使用者的人聲資料"""
+
+    command = """
+    SELECT name, sound_name, time
+    FROM sound
+    WHERE member_acc = %s
+    LIMIT %s
+    """
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [username, limit])
+
+        result = cursor.fetchall()
+
+    if not result:
+        return None
+
+    data = {}
+
+    for r in result:
+        if data.get(r[0]) is None:
+            data[r[0]] = []
+
+        data[r[0]].append({"sound_name": r[1], "time": r[2]})
+
+    return data

@@ -34,6 +34,9 @@ def index_start(request):
         user_song_list = crud.get_song_list(username)
         content["song_list"] = user_song_list
 
+        user_sound_list = crud.get_user_sound(username)
+        content["sound_list"] = user_sound_list
+
     return render(request, 'index.html', content)  # 執行結束後跳回index
 
 

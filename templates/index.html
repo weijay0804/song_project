@@ -1745,235 +1745,83 @@
         <form action=""><!--後端程式碼-->
 
             <div class="tab-content-1">
+
                 <div class="tab-content-11" id="tab11">
-                    <div class="tab11-person" data-tab="content-person1">
+                    {% for key, val in sound_list.items %}
+                    <div class="tab11-person" data-tab="content-person{{ forloop.counter }}">
                         <img src="{% static 'images/memberimg.jpg' %}">
-                        <h3>黃昱瑋</h3>
+                        <h3>{{ key }}</h3>
                     </div>
-                    <div class="tab11-person" data-tab="content-person2">
-                        <img src="{% static 'images/memberimg.jpg' %}">
-                        <h3>謝庭芝</h3>
-                    </div>
-                    <div class="tab11-person" data-tab="content-person3">
-                        <img src="{% static 'images/memberimg.jpg' %}">
-                        <h3>鄧如芳</h3>
-                    </div>
-                    <div class="tab11-person" data-tab="content-person4">
-                        <img src="{% static 'images/memberimg.jpg' %}">
-                        <h3>陳念廷</h3>
-                    </div>
-                    <div class="tab11-person" data-tab="content-person5">
+
+                    {% if forloop.last %}
+                    <div class="tab11-person" data-tab="content-person{{ forloop.counter|add:1 }}">
                         <img src="{% static 'images/add2.png' %}">
                         <h3>新增更多</h3>
                     </div>
+                    {% endif %}
+
+
+                    {% endfor %}
+
                 </div>
-                <div class="section2" id="content-person1">
+
+                {% for key, val in sound_list.items %}
+                <div class="section2" id="content-person{{ forloop.counter }}" {% if not forloop.first %}
+                    style="display: none;" {% endif %}>
+                    {% for v in val %}
                     <div class="one">
-                        <h5>1</h5>
+                        <h5>{{ v.sound_name }}</h5>
                         <audio controls>
                             <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
                         </audio>
                     </div>
-                    <div class="one">
-                        <h5>2</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>3</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>4</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>5</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>6</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
+                    {% endfor %}
+
                     <button type="button" class="music-btn" data-target="modal1">
-                        <img src="{% static 'images/add2.png' %}">
+                        <img src=" {% static 'images/add2.png' %}">
                     </button>
-                </div>
-                <!--新增聲音-->
-                <div id="modal1" class="modal">
-                    <div class="modal-content-music">
-                        <span class="close-voice" data-target="modal1" title="Close Modal">&times;</span>
-                        <br><br> <br><br>
-                        <h2>新增人聲</h2>
-                        <div class="section1-voiceadd">
-                            <h3 style="margin: 0px;">7</h3>
 
-                            <div class="music-player">
-                                <h2>請清唱以下歌曲</h2>
-                                <h4> 一閃一閃亮晶晶　滿天都是小星星
+                    <div id="modal1" class="modal">
+                        <div class="modal-content-music">
+                            <span class="close-voice" data-target="modal1" title="Close Modal">&times;</span>
+                            <br><br> <br><br>
+                            <h2>新增人聲</h2>
+                            <div class="section1-voiceadd">
+                                <h3 style="margin: 0px;">7</h3>
 
-                                    掛在天上放光明　好像許多小眼睛
+                                <div class="music-player">
+                                    <h2>請清唱以下歌曲</h2>
+                                    <h4> 一閃一閃亮晶晶　滿天都是小星星
 
-                                    一閃一閃亮晶晶　滿天都是小星星</h4>
+                                        掛在天上放光明　好像許多小眼睛
+
+                                        一閃一閃亮晶晶　滿天都是小星星</h4>
 
 
-                                <div class="voicwave">
-                                    <img src="{% static 'images/audio.png' %}" alt="">
-                                    <img src="{% static 'images/audio.png' %}" alt="">
-                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
-                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
-                                    <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                    <div class="voicwave">
+                                        <img src="{% static 'images/audio.png' %}" alt="">
+                                        <img src="{% static 'images/audio.png' %}" alt="">
+                                        <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                        <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                        <img src="{% static 'images/audio-waves.png' %}" alt="">
+                                    </div>
+                                    <div class="player-controls">
+                                        <audio id="audio-player" controls></audio>
+                                    </div>
                                 </div>
-                                <div class="player-controls">
-                                    <audio id="audio-player" controls></audio>
+                                <div class="section2-voiceadd">
+
+                                    <button id="record-button" class="s2-vd-1">開始錄音</button>
+                                    <button type="button" class="s2-vd-2" data-target="modal1">確定</button>
+
                                 </div>
-                            </div>
-                            <div class="section2-voiceadd">
-
-                                <button id="record-button" class="s2-vd-1">開始錄音</button>
-                                <button type="button" class="s2-vd-2" data-target="modal1">確定</button>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
-
-
-
-                <div class="section2" id="content-person2" style="display: none;">
-                    <div class="one">
-                        <h5>N1</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N2</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N3</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N4</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N5</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N6</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <button type="button" class="music-btn" data-target="modal1">
-                        <img src="{% static 'images/add.png' %}">
-                    </button>
-                </div>
-                <div class="section2" id="content-person3" style="display: none;">
-                    <div class="one">
-                        <h5>N1</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N2</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N3</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N4</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N5</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N6</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <button type="button" class="music-btn" data-target="modal1">
-                        <img src="{% static 'images/add.png' %}">
-                    </button>
-                </div>
-                <div class="section2" id="content-person4" style="display: none;">
-                    <div class="one">
-                        <h5>N1</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N2</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N3</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N4</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N5</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <div class="one">
-                        <h5>N6</h5>
-                        <audio controls>
-                            <source src="{% static 'audio/horse.mp3' %}" type="audio/mpeg">
-                        </audio>
-                    </div>
-                    <button type="button" class="music-btn" data-target="modal1">
-                        <img src="{% static 'images/add.png' %}">
-                    </button>
-                </div>
-                <div class="section2" id="content-person5" style="display: none;">
+                {% if forloop.last %}
+                <!--新增聲音-->
+                <div class="section2" id="content-person{{ forloop.counter|add:1 }}" style="display: none;">
                     <div class="two">
                         <div class="addnew">
                             <div class="addnew-two">
@@ -1989,6 +1837,8 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </form>
     </div>
@@ -2003,7 +1853,7 @@
                 <div class="c4-left-top">
 
                     <div class="c4-left-top-img">
-                        <img src="{% static images/creat1.png" alt="">
+                        <img src="{% static 'images/creat1.png' %}" alt="">
                     </div>
 
                     <div class="c4-creat-title">
