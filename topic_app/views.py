@@ -5,6 +5,8 @@ from django.db import connection  # 連接資料庫
 from django.shortcuts import redirect  # 返回某個urls的函數
 from django.contrib import messages
 
+from . import crud
+
 
 # Hello django
 def sayhello(request):
@@ -45,19 +47,14 @@ def index_start(request):
 
         username = request.session["username"]
 
-        cursor = connection.cursor()
-        cursor.execute("SELECT COUNT(sn) FROM love_singer WHERE member_acc = %s", [username])
+        user_love_singer_num = crud.count_user_love_singers(username)
 
-        result = cursor.fetchall()[0][0]
-
-        if result < 3:
+        if user_love_singer_num < 3:
             content["is_first"] = True
 
-            cursor.execute("SELECT DISTINCT(singer) FROM singer_relation")
-            singers = [s[0] for s in cursor.fetchall()]
+            singers = crud.get_singers()
+            singers = [s[0] for s in singers]
             content["singers"] = singers
-
-        cursor.close()
 
     return render(request, 'index.html', content)  # 執行結束後跳回index
 
@@ -69,15 +66,10 @@ def add_favorites_singer_view(requset):
             return redirect("home")
 
         select = requset.POST.getlist('favorite_singers_select', [])
-        cursor = connection.cursor()
 
         username = requset.session.get("username")
 
-        data = [[d, username] for d in select]
-
-        cursor.executemany("INSERT INTO love_singer(singer, member_acc) VALUES(%s, %s)", data)
-
-        cursor.close()
+        crud.add_user_love_singer(select, username)
 
         messages.success(requset, "新增成功")
 
@@ -89,21 +81,15 @@ def login_view(request):
         username = request.POST['uname']
         password = request.POST['psw']
 
-        cursor = connection.cursor()
+        user_data = crud.get_user(username)
 
-        cursor.execute("SELECT member_acc, password FROM member WHERE member_acc=%s", (username))
-
-        user = cursor.fetchone()
-
-        if user is None or user[-1] != password:
+        if user_data is None or user_data["password"] != password:
             messages.info(request, "使用者或密碼輸入錯誤")
 
         else:
             messages.success(request, "登入成功")
             request.session["is_login"] = True
-            request.session["username"] = user[0]
-
-        cursor.close()
+            request.session["username"] = user_data["member_acc"]
 
     return redirect("home")
 
@@ -114,26 +100,18 @@ def register_view(request):
         email = request.POST["email"]
         pwd = request.POST["psw"]
 
-        cursor = connection.cursor()
+        user_data = crud.get_user(username)
 
-        cursor.execute("SELECT member_acc FROM member WHERE member_acc = %s", [username])
-
-        user = cursor.fetchone()
-
-        if user:
+        if user_data:
             messages.info(request, "使用者已經存在")
 
         else:
-            cursor.execute(
-                "INSERT INTO member(member_acc, password, mail, isvip) VALUES(%s, %s, %s, %s)",
-                [username, pwd, email, "1"],
-            )
+            crud.add_user(username, pwd, email)
             messages.success(request, "註冊成功")
 
             request.session["is_login"] = True
             request.session["username"] = username
 
-        cursor.close()
     return redirect("home")
 
 
