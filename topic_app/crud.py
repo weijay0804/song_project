@@ -78,3 +78,27 @@ def get_relation_singer(username: str, limit=7) -> list:
         result = cursor.fetchall()
 
     return [s[0] for s in result]
+
+
+def get_song_list(username: str, limit: int = 5) -> list:
+    """取得使用者的歌曲清單"""
+
+    command = """
+    SELECT list_name, COUNT(song)
+    FROM song_list
+    WHERE member_acc = %s
+    GROUP BY list_name
+    LIMIT %s
+    """
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [username, limit])
+
+        result = cursor.fetchall()
+
+    if not result:
+        return None
+
+    data = [{"list_name": d[0], "count": d[1]} for d in result]
+
+    return data

@@ -342,99 +342,43 @@
 
                 <div class="songlist">
 
+                    {% if is_login %}
+
+                    {% if song_list %}
+
+                    {% for list in song_list %}
                     <div class="list-item">
                         <div class="songlist-play-button">
                             <div class="songlist-play">
                                 <div class="songlist-name">
-                                    <p>鄧紫棋合輯</p>
+                                    <p>{{ list.list_name }}</p>
                                 </div>
                                 <div class="songlist-bottom">
                                     <div class="songlist-icon">
                                         <img src="{% static 'images/music2.png' %}" alt="">
                                     </div>
                                     <div class="songlist-count">
-                                        <p>15</p>
+                                        <p>{{ list.count }}</p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="play-button-img">
-                                <img src="{% static 'images/play.png' %}" alt="">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="list-item">
-                        <div class="songlist-play-button">
-                            <div class="songlist-play">
-                                <div class="songlist-name">
-                                    <p>The Weekend</p>
-                                </div>
-                                <div class="songlist-bottom">
-                                    <div class="songlist-icon">
-                                        <img src="{% static 'images/music2.png' %}" alt="">
-                                    </div>
-                                    <div class="songlist-count">
-                                        <p>15</p>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="play-button-img">
                                 <img src="{% static 'images/play.png' %}" alt="">
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
 
-                    <div class="list-item">
-                        <div class="songlist-play-button">
-                            <div class="songlist-play">
-                                <div class="songlist-name">
-                                    <p>周杰倫合輯</p>
-                                </div>
-                                <div class="songlist-bottom">
-                                    <div class="songlist-icon">
-                                        <img src="{% static 'images/music2.png' %}" alt="">
-                                    </div>
-                                    <div class="songlist-count">
-                                        <p>15</p>
-                                    </div>
-                                </div>
-                            </div>
+                    {% else %}
+                    <h4>還沒有歌曲清單</h4>
+                    {% endif %}
 
-                            <div class="play-button-img">
-                                <img src="{% static 'images/play.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="list-item">
-                        <div class="songlist-play-button">
-                            <div class="songlist-play">
-                                <div class="songlist-name">
-                                    <p>1234567</p>
-                                </div>
-                                <div class="songlist-bottom">
-                                    <div class="songlist-icon">
-                                        <img src="{% static 'images/music2.png' %}" alt="">
-                                    </div>
-                                    <div class="songlist-count">
-                                        <p>15</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="play-button-img">
-                                <img src="{% static 'images/play.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    {% else %}
+                    <h4>請先登入</h4>
+                    {% endif %}
 
                 </div>
-
             </div>
-
 
 
             <div class="home-right">

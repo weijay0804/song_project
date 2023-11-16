@@ -31,6 +31,9 @@ def index_start(request):
 
         content["love_relation_singer"] = love_relation_singer
 
+        user_song_list = crud.get_song_list(username)
+        content["song_list"] = user_song_list
+
     return render(request, 'index.html', content)  # 執行結束後跳回index
 
 
