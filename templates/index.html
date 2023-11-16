@@ -119,10 +119,11 @@
 
                 <!-- 選擇喜愛歌手 -->
                 {% if is_first and is_login %}
-                <div class="favorite_singer">
+                <div class="favorite_singers">
                     <div id="id03" class="modallog" style="display: block;">
-                        <form class="modal-content1 animate page-content" action="" method="post" id="page2"
-                            style="overflow: auto; display: block;">
+                        <form class="modal-content1 animate page-content" action="{% url 'add_favorites_singer' %}"
+                            method="post" id="page2" style="overflow: auto; display: block;">
+                            {% csrf_token %}
 
                             <div class="container" style="max-height: 80vh; "><br>
                                 <h1 style="text-align: center;margin: 0%;">選擇你喜歡的歌手</h1>
@@ -136,97 +137,27 @@
                                     <!--人像和名字-->
                                     <div class="idol-member">
                                         <div class="item-group">
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/dan.jpg' %}">
-                                                <h4>鄧紫棋</h4>
-                                            </div>
+                                            <select multiple id="favorite_singers_select" name="favorite_singers_select"
+                                                style="display: none;">
+                                                {% for singer in singers %}
+                                                <option value="{{ singer }}">{{ singer }}</option>
+                                                {% endfor %}
+                                            </select>
+
+                                            {% for singer in singers %}
                                             <div class="one-group">
                                                 <img class="check" src="{% static 'images/check.png' %}">
                                                 <img class="singimg2" src="{% static 'images/chu.jpg' %}">
-                                                <h4>周杰倫</h4>
+                                                <h4 class="singer-name" option-index="{{ forloop.counter0 }}">
+                                                    {{singer}}
+                                                </h4>
                                             </div>
+                                            {% endfor %}
 
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/yan.jpg' %}">
-                                                <h4>楊丞琳</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/li.jpg' %}">
-                                                <h4>李榮浩</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/iu.jpg' %}">
-                                                <h4>IU</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/blackpink.jpg' %}">
-                                                <h4>BlackPink</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
-                                                <h4>Le sserafim</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/kao.jpg' %}">
-                                                <h4>告五人</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/chushin.jpg' %}">
-                                                <h4>周興哲</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/chai.jpg' %}">
-                                                <h4>蔡依林</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/Itzy.jpg' %}">
-                                                <h4>Itzy</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/Le sserafim.jpg' %}">
-                                                <h4>林俊傑</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/Aespa.jpg' %}">
-                                                <h4>Aespa</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/(G) I-DLE.jpg' %}">
-                                                <h4>(G) I-DLE</h4>
-                                            </div>
-
-                                            <div class="one-group">
-                                                <img class="check" src="{% static 'images/check.png' %}">
-                                                <img class="singimg2" src="{% static 'images/VIVIZ.jpg' %}">
-                                                <h4>VIVIZ</h4>
-                                            </div>
                                         </div>
                                     </div>
-                                    <button class="btn01" type="button" style="align-items: center;">確定</button><br>
+                                    <button class="btn01" type="button" style="align-items: center;"
+                                        onclick="favoriteSingerSubmit()">確定</button><br>
                                 </main>
                             </div>
                         </form>

@@ -53,9 +53,35 @@ def index_start(request):
         if result < 3:
             content["is_first"] = True
 
+            cursor.execute("SELECT DISTINCT(singer) FROM singer_relation")
+            singers = [s[0] for s in cursor.fetchall()]
+            content["singers"] = singers
+
         cursor.close()
 
     return render(request, 'index.html', content)  # 執行結束後跳回index
+
+
+def add_favorites_singer_view(requset):
+    if requset.method == "POST":
+        if not requset.session.get("is_login"):
+            messages.info(requset, "請先登入")
+            return redirect("home")
+
+        select = requset.POST.getlist('favorite_singers_select', [])
+        cursor = connection.cursor()
+
+        username = requset.session.get("username")
+
+        data = [[d, username] for d in select]
+
+        cursor.executemany("INSERT INTO love_singer(singer, member_acc) VALUES(%s, %s)", data)
+
+        cursor.close()
+
+        messages.success(requset, "新增成功")
+
+    return redirect("home")
 
 
 def login_view(request):
