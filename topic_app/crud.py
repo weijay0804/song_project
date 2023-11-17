@@ -1,4 +1,5 @@
 from contextlib import contextmanager
+from datetime import datetime
 
 from django.db import connection
 
@@ -131,3 +132,18 @@ def get_user_sound(username: str, limit: int = 100) -> dict:
         data[r[0]].append({"sound_name": r[1], "time": r[2]})
 
     return data
+
+
+def add_creation_song(username: str, song_name: str, data_name: str = None) -> None:
+    """新增資料至 creation song table，如果沒有 `data_name` 參數，默認會是目前時間"""
+
+    command = """
+    INSERT INTO creation_song(song_name, member_acc, data_name, time)
+    VALUES(%s, %s, %s, %s)
+    """
+
+    if data_name is None:
+        data_name = datetime.now().strftime("%Y%m%d%H%M%S")
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [song_name, username, data_name, datetime.now()])

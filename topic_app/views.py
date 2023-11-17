@@ -1,7 +1,11 @@
+import uuid
+import os
+
 from django.shortcuts import render
 from django.shortcuts import redirect  # 返回某個urls的函數
 from django.contrib import messages
 
+from topic import settings
 from . import crud
 
 
@@ -23,9 +27,9 @@ def index_start(request):
         if user_love_singer_num < 3:
             content["is_first"] = True
 
-            singers = crud.get_singers()
-            singers = [s[0] for s in singers]
-            content["singers"] = singers
+        singers = crud.get_singers()
+        singers = [s[0] for s in singers]
+        content["singers"] = singers
 
         love_relation_singer = crud.get_relation_singer(username)
 
@@ -101,5 +105,31 @@ def logout_view(request):
         request.session.flush()
 
     messages.success(request, "你已經登出")
+
+    return redirect("home")
+
+
+def add_creation_song(request):
+    if request.method == "POST":
+        song_name = request.POST["creation_song_name"]
+
+        username = request.session.get("username")
+
+        image = request.FILES.get("profile_pic")
+
+        if image is not None:
+            _, extension = os.path.splitext(image.name)
+            filename = str(uuid.uuid4())
+            file_path = os.path.join(settings.BASE_DIR, "static", "images", filename + extension)
+
+            image_content = image.chunks()
+
+            with open(file_path, "wb") as fs:
+                for tmp in image_content:
+                    fs.write(tmp)
+
+        crud.add_creation_song(username, song_name)
+
+        messages.success(request, "新增成功")
 
     return redirect("home")

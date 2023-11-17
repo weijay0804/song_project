@@ -20,6 +20,7 @@ from topic_app.views import (
     logout_view,
     register_view,
     add_favorites_singer_view,
+    add_creation_song,
     index_start,
 )
 
@@ -30,4 +31,5 @@ urlpatterns = [
     path("logout/", logout_view, name="logout"),
     path("register/", register_view, name="register"),
     path("add_favorites_singer/", add_favorites_singer_view, name="add_favorites_singer"),
+    path("add_creation_song/", add_creation_song, name="add_creation_song"),
 ]

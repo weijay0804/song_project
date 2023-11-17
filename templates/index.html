@@ -2000,7 +2000,9 @@
 
 
             <div class="content4-creat-right">
-                <form action=""><!--後端程式碼-->
+                <form action="{% url 'add_creation_song' %}" id="creation_song_form" method="post"
+                    enctype="multipart/form-data"><!--後端程式碼-->
+                    {% csrf_token %}
                     <div class="c4-r-choose-songlist">
                         <p>4.片段試聽</p>
                     </div>
@@ -2023,12 +2025,11 @@
                     </div>
 
                     <div class="c4-r-choose-voice">
-                        <select name="c4-r-choose-voice" id="">
-                            <option value="" hidden></option>
-                            <option value="">黃昱瑋</option>
-                            <option value="">謝庭芝</option>
-                            <option value="">鄧如芳</option>
-                            <option value="">陳念廷</option>
+                        <select name="creation_song_select" id="creation_song_select" required>
+                            <option value="null" hidden></option>
+                            {% for s in singers %}
+                            <option value="{{ s }}">{{s}}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -2037,16 +2038,15 @@
                     </div>
 
                     <div class="c4-r-add-songname">
-                        <input type="text" class="" placeholder="">
+                        <input id="creation_song_name" type="text" class="" placeholder="" name="creation_song_name"
+                            required>
                     </div>
 
                     <div class="choose-songlist">
                         <p>9.上傳圖片</p>
                     </div>
 
-                    <form id="myform" method="" action="" enctype="multipart/form-data">
-                        <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png"><br>
-                    </form>
+                    <input type="file" id="profile_pic" name="profile_pic" accept=".jpg, .jpeg, .png"><br>
 
                     <div class="generate-btn">
                         <button id="openModalBtn">
