@@ -147,3 +147,33 @@ def add_creation_song(username: str, song_name: str, data_name: str = None) -> N
 
     with get_cursor() as cursor:
         cursor.execute(command, [song_name, username, data_name, datetime.now()])
+
+
+def get_user_song_list_and_song(username: str) -> dict:
+    """取得使用者收藏的歌曲清單和歌曲清單中的歌曲"""
+
+    command = """
+    SELECT
+    list.song, list.list_name, song.singer, song.long
+    FROM song_list AS list
+    JOIN song ON list.song = song.name
+    WHERE list.member_acc = %s
+    """
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [username])
+
+        result = cursor.fetchall()
+
+    if not result:
+        return None
+
+    data = {}
+
+    for r in result:
+        if data.get(r[1]) is None:
+            data[r[1]] = []
+
+        data[r[1]].append({"song_name": r[0], "singer": r[2], "song_time": r[3]})
+
+    return data

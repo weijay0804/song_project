@@ -41,6 +41,18 @@ def index_start(request):
         user_sound_list = crud.get_user_sound(username)
         content["sound_list"] = user_sound_list
 
+        user_song_list_and_song = crud.get_user_song_list_and_song(username)
+
+        if user_song_list_and_song:
+            # 將歌曲時間轉換成 M:S 格式
+            for _, songs in user_song_list_and_song.items():
+                for song in songs:
+                    song[
+                        "song_time"
+                    ] = f"{int(song['song_time']) // 60}:{int(song['song_time']) % 60}"
+
+        content["song_list_song"] = user_song_list_and_song
+
     return render(request, 'index.html', content)  # 執行結束後跳回index
 
 
