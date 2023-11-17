@@ -180,6 +180,7 @@
             </div>
         </div>
 
+        {% if is_login %}
         <div class="tab" onclick="showTab(2)">
             <div class="tab-img">
                 <img src="{% static 'images/songslist.png' %}" alt="">
@@ -188,7 +189,9 @@
                 <p>歌單</p>
             </div>
         </div>
+        {% endif %}
 
+        {% if is_login %}
         <div class="tab" onclick="showTab(3)">
             <div class="tab-img">
                 <img src="{% static 'images/voice.png' %}" alt="">
@@ -197,7 +200,9 @@
                 <p>人聲</p>
             </div>
         </div>
+        {% endif %}
 
+        {% if is_login %}
         <div class="tab" onclick="showTab(4)">
             <div class="tab-img">
                 <img src="{% static 'images/creat.png' %}" alt="">
@@ -206,7 +211,9 @@
                 <p>創作</p>
             </div>
         </div>
+        {% endif %}
 
+        {% if is_login %}
         <div class="menu">
             <p>Library</p>
         </div>
@@ -228,6 +235,7 @@
                 <p>我的創作</p>
             </div>
         </div>
+        {% endif %}
 
         <!--登出--> <!--後端程式碼-->
         {% if is_login %}
@@ -334,9 +342,12 @@
                     <div class="title-txt">
                         <p>我的歌單</p>
                     </div>
+
+                    {% if is_login %}
                     <div class="title-href">
                         <a href="#" onclick="showTab(2)">See More</a>
                     </div>
+                    {% endif %}
 
                 </div>
 
@@ -394,13 +405,16 @@
                     <div class="title-txt">
                         <p>我的創作</p>
                     </div>
+
+                    {% if is_login %}
                     <div class="title-href">
                         <a href="#" onclick="showTab(7)">See More</a>
                     </div>
-
+                    {% endif %}
                 </div>
 
                 <div class="creatlist">
+                    {% if is_login %}
                     <ul id="playlist">
                         <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
                             <div class="creatlist-item">
@@ -434,9 +448,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </li>
-
                         <li data-src="#"><!-- data-src="音樂檔案路徑" -->
 
                             <div class="creatlist-item">
@@ -470,9 +482,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </li>
-
                         <li data-src="#">
                             <div class="creatlist-item" id="creatlist-item3">
                                 <div class="creatlist-left">
@@ -492,7 +502,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="creatlist-right">
                                     <div class="creatlist-time">
                                         <p>0:58</p>
@@ -505,12 +514,11 @@
                                     </div>
                                 </div>
                             </div>
-
                         </li>
-
                     </ul>
-
-
+                    {% else %}
+                    <h4>請先登入</h4>
+                    {% endif %}
                 </div>
 
                 <!--播放器-->
@@ -1759,9 +1767,15 @@
                         <h3>新增更多</h3>
                     </div>
                     {% endif %}
-
-
                     {% endfor %}
+
+                    {% if is_login and not sound_list %}
+                    <h4>還沒有人聲資料</h4>
+                    <div class="tab11-person" data-tab="content-person1">
+                        <img src="{% static 'images/add2.png' %}">
+                        <h3>新增更多</h3>
+                    </div>
+                    {% endif %}
 
                 </div>
 
@@ -1839,6 +1853,27 @@
                 </div>
                 {% endif %}
                 {% endfor %}
+
+                {% if is_login and not sound_list %}
+                <!--新增聲音-->
+                <div class="section2" id="content-person1" style="display: none;">
+                    <div class="two">
+                        <div class="addnew">
+                            <div class="addnew-two">
+                                <img src="{% static 'images/add.png' %}">
+                                <h3>建立新人聲資料庫</h3>
+                            </div>
+
+                            <h3>創作時可以有不同人聲歌曲</h3><br>
+                        </div>
+                        <div class="addbutton">
+                            <img src="{% static 'images/crown.png' %}">
+                            <button>開始訂閱</button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
             </div>
         </form>
     </div>
