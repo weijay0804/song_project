@@ -51,11 +51,11 @@ def get_user(username: str) -> dict:
     return {"member_acc": result[0], "password": result[-1]}
 
 
-def add_user(username: str, password: str, email: str, is_vip: str = "1") -> None:
+def add_user(username: str, password: str, email: str, phone: str, is_vip: str = "1") -> None:
     with get_cursor() as cursor:
         cursor.execute(
-            "INSERT INTO member(member_acc, password, mail, isvip) VALUES(%s, %s, %s, %s)",
-            [username, password, email, is_vip],
+            "INSERT INTO member(member_acc, password, mail, phone, isvip) VALUES(%s, %s, %s, %s, %s)",
+            [username, password, email, phone, is_vip],
         )
 
 

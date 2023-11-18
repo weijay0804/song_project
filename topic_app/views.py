@@ -96,6 +96,7 @@ def register_view(request):
         username = request.POST["uname"]
         email = request.POST["email"]
         pwd = request.POST["psw"]
+        phone = request.POST["phone"]
 
         user_data = crud.get_user(username)
 
@@ -103,7 +104,7 @@ def register_view(request):
             messages.info(request, "使用者已經存在")
 
         else:
-            crud.add_user(username, pwd, email)
+            crud.add_user(username, pwd, email, phone)
             messages.success(request, "註冊成功")
 
             request.session["is_login"] = True
