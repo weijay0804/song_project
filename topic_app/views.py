@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect  # 返回某個urls的函數
 from django.contrib import messages
 
-from topic import settings
 from . import crud
+from . import utils
 
 
 # 正式程式 fight go go
@@ -105,6 +105,8 @@ def register_view(request):
 
         else:
             crud.add_user(username, pwd, email, phone)
+            utils.create_user_data_folder(username)
+            utils.copy_auido_file(username)
             messages.success(request, "註冊成功")
 
             request.session["is_login"] = True
@@ -133,7 +135,7 @@ def add_creation_song(request):
         if image is not None:
             _, extension = os.path.splitext(image.name)
             filename = str(uuid.uuid4())
-            file_path = os.path.join(settings.BASE_DIR, "static", "images", filename + extension)
+            file_path = os.path.join(utils.get_user_data_folder(username), filename + extension)
 
             image_content = image.chunks()
 
