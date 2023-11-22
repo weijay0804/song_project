@@ -1,3 +1,4 @@
+from datetime import datetime
 import shutil
 import os
 
@@ -27,13 +28,19 @@ def create_user_data_folder(username: str) -> None:
     os.mkdir(get_user_data_folder(username))
 
 
-def copy_auido_file(username: str) -> None:
+def copy_auido_file(username: str, file_name: str) -> None:
     """將示範用的音檔 copy 到指定的 username 的 user_data folder 中"""
 
     auido_path = os.path.join(settings.BASE_DIR, "test_audio.mp3")
-    user_folder_path = os.path.join(get_user_data_folder(username), "test_audio.mp3")
+    user_folder_path = os.path.join(get_user_data_folder(username), file_name)
 
     if os.path.exists(user_folder_path):
         return
 
     shutil.copyfile(auido_path, user_folder_path)
+
+
+def get_current_time() -> str:
+    """取得格式為 YYYYMMDDHHMMSS 格式的目前時間"""
+
+    return datetime.now().strftime("%Y%m%d%H%M%S")

@@ -106,7 +106,6 @@ def register_view(request):
         else:
             crud.add_user(username, pwd, email, phone)
             utils.create_user_data_folder(username)
-            utils.copy_auido_file(username)
             messages.success(request, "註冊成功")
 
             request.session["is_login"] = True
@@ -143,7 +142,12 @@ def add_creation_song(request):
                 for tmp in image_content:
                     fs.write(tmp)
 
-        crud.add_creation_song(username, song_name)
+        audio_name = utils.get_current_time()
+        data_name = audio_name + '.mp3'
+
+        utils.copy_auido_file(username, data_name)
+
+        crud.add_creation_song(username, song_name, data_name)
 
         messages.success(request, "新增成功")
 
