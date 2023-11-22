@@ -850,7 +850,8 @@
                     <div class="one">
                         <h5>{{ v.sound_name }}</h5>
                         <audio controls>
-                            <source src="{% static 'user_data/'|add:username|urlencode|add:'/test_audio.mp3' %}"
+                            <source
+                                src="{% static 'user_data/'|add:username|urlencode|add:'/'|add:v.data_name|urlencode %}"
                                 type="audio/mpeg">
                         </audio>
                     </div>

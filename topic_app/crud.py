@@ -109,7 +109,7 @@ def get_user_sound(username: str, limit: int = 100) -> dict:
     """取得使用者的人聲資料"""
 
     command = """
-    SELECT name, sound_name, time
+    SELECT name, sound_name, data_name, time
     FROM sound
     WHERE member_acc = %s
     LIMIT %s
@@ -129,7 +129,7 @@ def get_user_sound(username: str, limit: int = 100) -> dict:
         if data.get(r[0]) is None:
             data[r[0]] = []
 
-        data[r[0]].append({"sound_name": r[1], "time": r[2]})
+        data[r[0]].append({"sound_name": r[1], "data_name": r[2], "time": r[3]})
 
     return data
 
