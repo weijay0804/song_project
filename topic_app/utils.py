@@ -44,3 +44,9 @@ def get_current_time() -> str:
     """取得格式為 YYYYMMDDHHMMSS 格式的目前時間"""
 
     return datetime.now().strftime("%Y%m%d%H%M%S")
+
+
+def convert_song_time(long_time: int) -> str:
+    """將 250s 轉換成 4:10 的格式"""
+
+    return f"{int(long_time) // 60}:{long_time % 60}"

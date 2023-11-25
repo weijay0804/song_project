@@ -597,6 +597,78 @@
         {% else %}
         <h4>還沒有歌單</h4>
         {% endif %}
+
+        <h4>推薦歌曲</h4>
+        <div class="newContent-buttom">
+            <ul id="recommend-list">
+
+                {% for recommend_s in recommend_song %}
+                <section class="songlist-box">
+
+                    <div class="nl-songlist">
+                        <div class="song-num">
+                            <p>0{{ forloop.counter }}</p>
+                        </div>
+
+                        <div class="dash">
+                            <p>-</p>
+                        </div>
+
+                        <div class="songimg">
+                            <img src="{% static 'images/memberimg.jpg' %}" alt="">
+                        </div>
+
+                        <div class="songtxt">
+
+                            <li data-src="{% static 'song/'|add:recommend_s.song_name|add:'.mp3'|urlencode' %}">
+                                <!-- data-src="音樂檔案路徑" -->
+                                <div class="song-name">
+                                    <p>{{ recommend_s.song_name }}</p>
+                                </div>
+                            </li>
+
+                            <div class="song-singer">
+                                <p>{{ recommend_s.singer }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="songlist-icon">
+                        <div class="songlist-icon-time">
+                            <p>{{ recommend_s.song_time }}</p>
+                        </div>
+
+                        <li data-src="{% static 'song/'|add:recommend_s.song_name|add:'.mp3'|urlencode' %}">
+                            <!-- data-src="音樂檔案路徑" -->
+                            <div class="more">
+                                <img src="{% static 'images/play-button.png' %}" alt="">
+                            </div>
+
+                        </li>
+
+                        <div class="more">
+                            <div class="heart"></div>
+
+                        </div>
+
+                        <div class="more">
+                            <img src="{% static 'images/plus.png' %}" alt="">
+                        </div>
+
+
+                        <div class="more">
+                            <img src="{% static 'images/more.png' %}" alt="">
+                        </div>
+                    </div>
+
+                </section>
+
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="audio">
+            <audio id="recommend-audio-player" controls></audio>
+        </div>
     </div>
 
     <!-- 新的内容区域，初始时被隐藏 -->
@@ -647,7 +719,8 @@
 
                                 <div class="songtxt">
 
-                                    <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
+                                    <li data-src="{% static 'song/'|add:song.song_name|add:'.mp3'|urlencode' %}">
+                                        <!-- data-src="音樂檔案路徑" -->
                                         <div class="song-name">
                                             <p>{{ song.song_name }}</p>
                                         </div>
@@ -664,7 +737,8 @@
                                     <p>{{ song.song_time }}</p>
                                 </div>
 
-                                <li data-src="#"> <!-- data-src="音樂檔案路徑" -->
+                                <li data-src="{% static 'song/'|add:song.song_name|add:'.mp3'' %}">
+                                    <!-- data-src="音樂檔案路徑" -->
                                     <div class="more">
                                         <img src="{% static 'images/play-button.png' %}" alt="">
                                     </div>

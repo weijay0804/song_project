@@ -47,11 +47,17 @@ def index_start(request):
             # 將歌曲時間轉換成 M:S 格式
             for _, songs in user_song_list_and_song.items():
                 for song in songs:
-                    song[
-                        "song_time"
-                    ] = f"{int(song['song_time']) // 60}:{int(song['song_time']) % 60}"
+                    song["song_time"] = utils.convert_song_time(song["song_time"])
 
         content["song_list_song"] = user_song_list_and_song
+
+        recommend_song = crud.get_recommend_song(username)
+
+        if recommend_song:
+            for s in recommend_song:
+                s["song_time"] = utils.convert_song_time(s["song_time"])
+
+        content["recommend_song"] = recommend_song
 
     return render(request, 'index.html', content)  # 執行結束後跳回index
 

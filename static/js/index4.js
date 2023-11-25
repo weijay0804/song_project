@@ -1,13 +1,27 @@
 //首頁音樂播放器
-const audioPlayer = document.getElementById('audio-playerr');
+const indexAudioPlayer = document.getElementById('audio-playerr');
 const playlist = document.getElementById('playlist');
 const songs = playlist.querySelectorAll('li');
 
 songs.forEach(song => {
     song.addEventListener('click', () => {
         const src = song.getAttribute('data-src');
-        audioPlayer.src = src;
-        audioPlayer.play();
+        indexAudioPlayer.src = src;
+        indexAudioPlayer.play();
+    });
+});
+
+// 推薦歌曲播放器
+const recommendAudioPlayer = document.getElementById('recommend-audio-player');
+const recommend_list = document.getElementById('recommend-list');
+const recommend_song = recommend_list.querySelectorAll('li');
+
+recommend_song.forEach(song => {
+    song.addEventListener('click', () => {
+        console.log("test")
+        const src = song.getAttribute('data-src');
+        recommendAudioPlayer.src = src;
+        recommendAudioPlayer.play();
     });
 });
 
@@ -18,6 +32,7 @@ const songs1 = playlist1.querySelectorAll('li');
 
 songs1.forEach(song => {
     song.addEventListener('click', () => {
+        console.log("test")
         const src = song.getAttribute('data-src');
         audioPlayer1.src = src;
         audioPlayer1.play();

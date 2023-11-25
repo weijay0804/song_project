@@ -174,3 +174,32 @@ def get_user_song_list_and_song(username: str) -> dict:
         data[r[1]].append({"song_name": r[0], "singer": r[2], "song_time": r[3]})
 
     return data
+
+
+def get_recommend_song(username: str) -> list:
+    command = """
+    SELECT DISTINCT(song.name), song.singer, song.long
+        FROM
+        (love_singer AS l
+        JOIN singer_relation AS s
+        ON l.singer = s.singer
+        )
+        INNER JOIN song
+        ON song.type = s.relation
+        WHERE l.member_acc = %s
+    """
+
+    with get_cursor() as cursor:
+        cursor.execute(command, [username])
+
+        result = cursor.fetchall()
+
+    if not result:
+        return None
+
+    data = []
+
+    for r in result:
+        data.append({"song_name": r[0], "singer": r[1], "song_time": r[2]})
+
+    return data
